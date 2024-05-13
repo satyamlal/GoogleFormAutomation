@@ -44,7 +44,7 @@ def main():
 
         email_check = emailChecked()
         print(email_check)
-        time.sleep(5)
+        time.sleep(1)
 
         fiCodeAdded = AddFiCode()
         print(fiCodeAdded)
@@ -52,9 +52,8 @@ def main():
         locationAdded = AddLocation()
         print(locationAdded)
 
-        # companySelected = dropdownAction()
-        # print(companySelected)
-        print("companySelected")
+        companySelected = dropdownAction()
+        print(companySelected)
         time.sleep(10)
 
     except TimeoutException:
@@ -76,17 +75,9 @@ def clearForm():
     print("Pop-up Menu Opened")
 
     # Use pyautogui to simulate mouse actions
-    # Move the mouse pointer to the middle of the screen
-    pyautogui.moveTo(x=middle_x+150, y=middle_y+100, duration=0.5)  # Adjust coordinates as needed
+    # Move the mouse pointer to the middle of the screen with additional movements
+    pyautogui.moveTo(x=middle_x+150, y=middle_y+100, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
     pyautogui.click()
-
-    # Pause briefly to let the action complete
-    time.sleep(3)
-
-
-    # Find and click on the "Clear form" button in the Pop Up Menu
-    # clearFormPopUpButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'l4V7wb')))
-    # clearFormPopUpButton.click()
 
     return "Form Cleared"
 
@@ -132,18 +123,12 @@ def dropdownAction():
     print("Dropdown menu Found")
     dropdownMenu.click()
     print("Dropdown menu Arrow Clicked")
-    time.sleep(3)
+    time.sleep(1)
 
-    dropdownMenu = driver.find_element(By.CLASS_NAME, 'kRoyt')
-    dropdownMenu.click()
-
-    # Find and click on the option "Private Company" based on the data-value attribute
-    options = driver.find_elements(By.CSS_SELECTOR, '[role="option"]')
-    for option in options:
-        time.sleep(5)
-        if option.get_attribute('data-value') == 'Private Company':
-            option.click()
-            break
+    # Move the mouse pointer to the middle of the screen with additional movements
+    pyautogui.moveTo(x=850, y=850, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
+    pyautogui.click()
+    time.sleep(200)
     return "Private Company selected"
 
 
