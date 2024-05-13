@@ -81,11 +81,10 @@ def main():
 
 
 def textFields():
-    # Mouse moved to the 'Clear form' button of the pop up menu
+    # Mouse moved to select 'UnMarried' marital status
     pyautogui.moveTo(x=650, y=400, duration=0.5)
     pyautogui.click()
     
-    # Marital Status radio button to choose 'UnMarried' option
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("8861037076") # Contact number added
 
