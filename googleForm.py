@@ -54,13 +54,48 @@ def main():
 
         companySelected = dropdownAction()
         print(companySelected)
-        time.sleep(10)
+        time.sleep(1)
+
+        nextButtonClicked = nextButton()
+        print(nextButtonClicked)
+        time.sleep(3)
+
+        consentButtonClicked = consentButton()
+        print(consentButtonClicked)
+        time.sleep(1)
+
 
     except TimeoutException:
         print("Timeout occurred: Element not found within the specified time")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+
+def consentButton():
+    # Wait for the "Clear" button to be clickable
+    consentButtonFound = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')))
+    
+    # Scroll the element into view (optional)
+    driver.execute_script("arguments[0].scrollIntoView(true);", consentButtonFound)
+    print("Screen Scrolled down to the consent Part")
+
+    # drop down menu arrow clicked
+    dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
+    print("Dropdown menu Found")
+    dropdownMenu.click()
+    print("Dropdown menu Arrow Clicked")
+
+    pyautogui.moveTo(x=650, y=300, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
+    pyautogui.click()
+
+    return "Consent set to YES"
+
+
+def nextButton():
+    clickNextButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span')))
+    clickNextButton.click()
+
+    return "Next Button Clicked - Waiting for next page to load"
 
 def clearForm():
     # Wait for the "Clear" button to be clickable
@@ -83,7 +118,7 @@ def clearForm():
 
 def emailChecked():
     # Find the element you want to interact with
-    emailClass = driver.find_element(By.XPATH, '//*[@id="i5"]/div[2]')
+    # emailClass = driver.find_element(By.XPATH, '//*[@id="i5"]/div[2]')
     print("Email Class Found")
 
     # Wait for email button to be clickable
@@ -128,7 +163,6 @@ def dropdownAction():
     # Move the mouse pointer to the middle of the screen with additional movements
     pyautogui.moveTo(x=850, y=850, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
     pyautogui.click()
-    time.sleep(200)
     return "Private Company selected"
 
 
