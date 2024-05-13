@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 import pyautogui
+import csv
 import random
 import time
 
