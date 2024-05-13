@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
+import pyautogui
 import time
 
 
@@ -26,6 +27,13 @@ driver.implicitly_wait(5)  # Implicit wait to wait for elements to be available
 driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
 print("Link Opened")
 time.sleep(5)
+
+# Get the screen's dimensions
+screen_width, screen_height = pyautogui.size()
+
+# Calculate the coordinates for the middle of the screen
+middle_x = screen_width // 2
+middle_y = screen_height // 2
 
 
 def main():
@@ -47,18 +55,13 @@ def main():
         # companySelected = dropdownAction()
         # print(companySelected)
         print("companySelected")
-        timedelay(10)
-    
+        time.sleep(10)
+
     except TimeoutException:
         print("Timeout occurred: Element not found within the specified time")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-
-def popUpMenu():
-    # Find and click on the "Clear form" button in the Pop Up Menu
-    clearFormPopUpButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/div/div[2]/div[3]/div[2]/span/span')))
-    clearFormPopUpButton.click()
 
 def clearForm():
     # Wait for the "Clear" button to be clickable
@@ -71,9 +74,20 @@ def clearForm():
     clearForm.click()
     
     print("Pop-up Menu Opened")
-    time.sleep(5)
-    
-    popUpMenu()
+
+    # Use pyautogui to simulate mouse actions
+    # Move the mouse pointer to the middle of the screen
+    pyautogui.moveTo(x=middle_x+150, y=middle_y+100, duration=0.5)  # Adjust coordinates as needed
+    pyautogui.click()
+
+    # Pause briefly to let the action complete
+    time.sleep(3)
+
+
+    # Find and click on the "Clear form" button in the Pop Up Menu
+    # clearFormPopUpButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'l4V7wb')))
+    # clearFormPopUpButton.click()
+
     return "Form Cleared"
 
 def emailChecked():
@@ -98,7 +112,6 @@ def AddFiCode():
     fiCodeElement.clear()
     
     print("FI Code: Text Field Cleared")
-    time.sleep(5)
     fiCodeElement.send_keys("12")
     
     return "FI Code: 12 - Added in the Text Field"
@@ -110,7 +123,6 @@ def AddLocation():
     
     locationElement.clear()
     print("Location: Text Field Cleared")
-    time.sleep(5)
     
     locationElement.send_keys("Gurgaon")
     return "Location:Gurgaon Added"
