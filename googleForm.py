@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 import pyautogui
+import random
 import time
 
 
@@ -69,6 +70,7 @@ def main():
 
         ageAdded = ageField() # This function is used to fill the text field
         print(ageAdded)
+
         time.sleep(200)
 
 
@@ -78,16 +80,54 @@ def main():
         print(f"An error occurred: {str(e)}")
 
 
+def textFields():
+    # Mouse moved to the 'Clear form' button of the pop up menu
+    pyautogui.moveTo(x=650, y=400, duration=0.5)
+    pyautogui.click()
+    
+    # Marital Status radio button to choose 'UnMarried' option
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys("8861037076") # Contact number added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys("priyankasharma324@gmail.com") # Email added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys("Graduate") # Highest Qualification added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[10]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys("TCS - IT") # Organization Name and Type Added
+
+    randomNumber = [1,2,3]
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[11]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys(random.choice(randomNumber)) # Total Professional Experience Added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[12]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys(random.choice(randomNumber)) # Tenure in Present Organization Added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[13]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys(random.choice(randomNumber)) # Total Tenure in Current Position Added
+
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    shortTextFields.send_keys("IT") # Functional Department Added
+
+    return "All Text Fields completed for this Page-2"
+
+
 def ageField():
     # Wait for input field to be visible and clickable
     ageTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[5]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     print("Age Text Field: Found")
     ageTextField.clear()
     print("Age Text Field Cleared")
-    ageTextField.send_keys("22")
+
+    age = [21,22,23,24,25]
+    ageTextField.send_keys(random.choice(age))
 
     # Scroll the element into view
-    # driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
+    driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
+    textFields()
     
     return "Age Added"
 
@@ -196,8 +236,8 @@ def dropdownAction():
     print("Dropdown menu Arrow Clicked")
     time.sleep(0.5)
 
-    # Move the mouse pointer to the middle of the screen with additional movements
-    pyautogui.moveTo(x=850, y=850, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
+    # Mouse moved to the 'Clear form' button of the pop up menu
+    pyautogui.moveTo(x=850, y=850, duration=0.5)
     pyautogui.click()
     return "Private Company selected"
 
