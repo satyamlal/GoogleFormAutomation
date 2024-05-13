@@ -39,36 +39,71 @@ middle_y = screen_height // 2
 def main():
 
     try:
-        formCleared = clearForm()
+        formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
         print(formCleared)
 
-        email_check = emailChecked()
+        email_check = emailChecked() # This function is used for check box
         print(email_check)
-        time.sleep(1)
+        time.sleep(3)
 
-        fiCodeAdded = AddFiCode()
+        fiCodeAdded = addFiCode() # This function is used to fill the text field
         print(fiCodeAdded)
 
-        locationAdded = AddLocation()
+        locationAdded = addLocation() # This function is used to fill the text field
         print(locationAdded)
 
-        companySelected = dropdownAction()
+        companySelected = dropdownAction() # This function is used for drop down menu
         print(companySelected)
         time.sleep(1)
 
-        nextButtonClicked = nextButton()
+        nextButtonClicked = nextButton() # This function is used to clear the form using the 'Next' button
         print(nextButtonClicked)
         time.sleep(3)
 
-        consentButtonClicked = consentButton()
+        consentButtonClicked = consentButton() # This function is used for drop down menu
         print(consentButtonClicked)
         time.sleep(1)
+
+        nameAdded = nameField() # This function is used to fill the text field
+        print(nameAdded)
+
+        ageAdded = ageField() # This function is used to fill the text field
+        print(ageAdded)
+        time.sleep(200)
 
 
     except TimeoutException:
         print("Timeout occurred: Element not found within the specified time")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+
+
+def ageField():
+    # Wait for input field to be visible and clickable
+    ageTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[5]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    print("Age Text Field: Found")
+    ageTextField.clear()
+    print("Age Text Field Cleared")
+    ageTextField.send_keys("22")
+
+    # Scroll the element into view
+    # driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
+    
+    return "Age Added"
+
+
+def nameField():
+    # Wait for input field to be visible and clickable
+    nameTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    print("Name Text Field: Found")
+    
+    # Scroll the element into view
+    # driver.execute_script("arguments[0].scrollIntoView(true);", nameTextField) # Wait for a short time to ensure the scroll operation is completed
+    nameTextField.clear()
+    print("Name Text Field Cleared")
+    nameTextField.send_keys("Priyanka Sharma")
+    
+    return "Name Added"
 
 
 def consentButton():
@@ -85,7 +120,8 @@ def consentButton():
     dropdownMenu.click()
     print("Dropdown menu Arrow Clicked")
 
-    pyautogui.moveTo(x=650, y=300, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
+    # Mouse moved to the 'Clear form' button of the pop up menu
+    pyautogui.moveTo(x=650, y=300, duration=0.5)  
     pyautogui.click()
 
     return "Consent set to YES"
@@ -128,7 +164,7 @@ def emailChecked():
     return "Email checked"
 
 
-def AddFiCode():
+def addFiCode():
     # Wait for fiCodeElement input field to be visible and clickable
     fiCodeElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     print("FI Code Text Field: Found")
@@ -142,7 +178,7 @@ def AddFiCode():
     
     return "FI Code: 12 - Added in the Text Field"
 
-def AddLocation():
+def addLocation():
     # Wait for location input field to be visible and clickable
     locationElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     print("Location Text Field Found")
@@ -158,7 +194,7 @@ def dropdownAction():
     print("Dropdown menu Found")
     dropdownMenu.click()
     print("Dropdown menu Arrow Clicked")
-    time.sleep(1)
+    time.sleep(0.5)
 
     # Move the mouse pointer to the middle of the screen with additional movements
     pyautogui.moveTo(x=850, y=850, duration=0.5)  # Mouse moved to the 'Clear form' button of the pop up menu
