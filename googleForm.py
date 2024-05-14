@@ -39,8 +39,12 @@ middle_y = screen_height // 2
 
 
 def main():
+    # Tracking Mouse Pointer Location actively on x,y axis
+    recordMousePointerLocation()
 
     try:
+        counter = 0
+
         formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
         print(formCleared)
 
@@ -75,7 +79,9 @@ def main():
         radioButtonsClicked = radioButtons()
         print(radioButtonsClicked)
 
-        time.sleep(200)
+        counter += 1
+
+        time.sleep(10)
 
 
     except TimeoutException:
@@ -85,10 +91,18 @@ def main():
 
 
 def radioButtons():
-
-    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="i83"]/span[1]/div/p/span')))
+    # Page Scrolled down
     pageScroll()
-    time.sleep(200)
+
+    # Move the cursor to male to female ratio in high visibility roles 
+    pyautogui.moveTo(x=650, y=325, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to male to female ratio in high visibility roles 
+    pyautogui.moveTo(x=650, y=725, duration=0.5)
+    pyautogui.click()
+
+    time.sleep(100)
 
     return "Radio Buttons Clicked successfully"
 
@@ -263,8 +277,18 @@ def dropdownAction():
 def pageScroll():
     pyautogui.moveTo(x=1910, y=1005, duration=0.5)
     # 15 clicks
-    for _ in range(15):
+    for _ in range(13):
         pyautogui.click()
 
+def recordMousePointerLocation():
+
+    try:
+        while True:
+            x, y = pyautogui.position()
+            positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
+            print(positionStr, end='')
+            print('\b' * len(positionStr), end='', flush=True)
+    except KeyboardInterrupt:
+        print('\n')
 
 main()
