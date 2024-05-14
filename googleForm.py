@@ -86,7 +86,11 @@ def main():
 
 def radioButtons():
 
-    return "Radio Button Clicked successfully"
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="i83"]/span[1]/div/p/span')))
+    pageScroll()
+    time.sleep(200)
+
+    return "Radio Buttons Clicked successfully"
 
 def textFields():
     # Mouse moved to select 'UnMarried' marital status
@@ -119,10 +123,8 @@ def textFields():
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("IT") # Functional Department Added
 
-    # Scroll the screen
+    # Scroll the screen to the 'Designation' Section
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
-
-    
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
     shortTextFields.send_keys("Team Leader")
 
@@ -257,6 +259,12 @@ def dropdownAction():
     pyautogui.click()
 
     return "Private Company selected"
+
+def pageScroll():
+    pyautogui.moveTo(x=1910, y=1005, duration=0.5)
+    # 15 clicks
+    for _ in range(15):
+        pyautogui.click()
 
 
 main()
