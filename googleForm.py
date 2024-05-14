@@ -39,8 +39,6 @@ middle_y = screen_height // 2
 
 
 def main():
-    # Tracking Mouse Pointer Location actively on x,y axis
-    recordMousePointerLocation()
 
     try:
         counter = 0
@@ -62,10 +60,6 @@ def main():
         print(companySelected)
         time.sleep(1)
 
-        nextButtonClicked = nextButton() # This function is used to clear the form using the 'Next' button
-        print(nextButtonClicked)
-        time.sleep(3)
-
         consentButtonClicked = consentButton() # This function is used for drop down menu
         print(consentButtonClicked)
         time.sleep(1)
@@ -76,12 +70,13 @@ def main():
         ageAdded = ageField() # This function is used to fill the text field
         print(ageAdded)
 
-        radioButtonsClicked = radioButtons()
-        print(radioButtonsClicked)
+        page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
+        print(page_Two_Radio_Buttons_Clicked)
 
         counter += 1
+        print(counter)
 
-        time.sleep(10)
+        time.sleep(100)
 
 
     except TimeoutException:
@@ -89,26 +84,99 @@ def main():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+def radio_Buttons_Page_Three():
 
-def radioButtons():
+
+def radio_Buttons_Page_Two():
     # Page Scrolled down
-    pageScroll()
+    pageScroll(13)
 
-    # Move the cursor to male to female ratio in high visibility roles 
-    pyautogui.moveTo(x=650, y=325, duration=0.5)
+    # Move the cursor to "male to female ratio in high visibility roles" section 
+    pyautogui.moveTo(x=654, y=428, duration=0.5)
     pyautogui.click()
 
-    # Move the cursor to male to female ratio in high visibility roles 
-    pyautogui.moveTo(x=650, y=725, duration=0.5)
+    # Move the cursor to "authority to control decisions" section
+    pyautogui.moveTo(x=645, y=834, duration=0.5)
     pyautogui.click()
 
-    time.sleep(100)
+    # Page Scrolled down
+    pageScroll(17)
 
-    return "Radio Buttons Clicked successfully"
+    # Move the cursor to "less informal gatherings" section
+    pyautogui.moveTo(x=650, y=363, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to "be a part of informal gathering" section 
+    pyautogui.moveTo(x=645, y=816, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(17)
+
+    # Move the cursor to "interests and hobbies" section 
+    pyautogui.moveTo(x=637, y=376, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to "enough qualified female managers" section 
+    pyautogui.moveTo(x=634, y=733, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(15)
+
+    # Move the cursor to "enough qualified female managers" section 
+    pyautogui.moveTo(x=640, y=440, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to "enough qualified female managers" section 
+    pyautogui.moveTo(x=638, y=817, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(15)
+
+    # Move the cursor to "gender-neutral and supportive" section 
+    pyautogui.moveTo(x=650, y=492, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to "transparent and objective recruitment" section 
+    pyautogui.moveTo(x=638, y=850, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(15)
+
+    # Move the cursor to "promotion criteria" section 
+    pyautogui.moveTo(x=650, y=492, duration=0.5)
+    pyautogui.click()
+
+    # Move the cursor to "female managers at top levels" section 
+    pyautogui.moveTo(x=637, y=884, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(15)
+
+    # Next Button clicked to enter page - 3
+    xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
+    nextButton(xpath)
+
+    return "Page - 2: Radio Buttons Clicked successfully"
 
 def textFields():
-    # Mouse moved to select 'UnMarried' marital status
-    pyautogui.moveTo(x=650, y=400, duration=0.5)
+
+    # Define the coordinates
+    x1, y1 = 647, 347
+    x2, y2 = 650, 400
+
+    # Define the probabilities
+    probabilities = [0.15, 0.85]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2)], weights=probabilities)[0]
+
+    # Mouse moved to select 'UnMarried' or 'Married' marital status
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
     pyautogui.click()
     
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
@@ -197,8 +265,9 @@ def consentButton():
     return "Consent set to YES"
 
 
-def nextButton():
-    clickNextButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span')))
+def nextButton(path): # Next Button Function to move to another page
+    xPath = path
+    clickNextButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xPath)))
     clickNextButton.click()
 
     return "Next Button Clicked - Waiting for next page to load"
@@ -272,23 +341,15 @@ def dropdownAction():
     pyautogui.moveTo(x=850, y=850, duration=0.5)
     pyautogui.click()
 
-    return "Private Company selected"
+    xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span' # XPATH for Page - 1 Next Button
+    nextButton(xPath)
 
-def pageScroll():
+    return "Private Company selected and Moved to the Page - 2"
+
+def pageScroll(n):
     pyautogui.moveTo(x=1910, y=1005, duration=0.5)
-    # 15 clicks
-    for _ in range(13):
+    # n clicks
+    for _ in range(n):
         pyautogui.click()
-
-def recordMousePointerLocation():
-
-    try:
-        while True:
-            x, y = pyautogui.position()
-            positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
-            print(positionStr, end='')
-            print('\b' * len(positionStr), end='', flush=True)
-    except KeyboardInterrupt:
-        print('\n')
 
 main()
