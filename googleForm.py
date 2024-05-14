@@ -72,6 +72,9 @@ def main():
         ageAdded = ageField() # This function is used to fill the text field
         print(ageAdded)
 
+        radioButtonsClicked = radioButtons()
+        print(radioButtonsClicked)
+
         time.sleep(200)
 
 
@@ -80,6 +83,10 @@ def main():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+
+def radioButtons():
+
+    return "Radio Button Clicked successfully"
 
 def textFields():
     # Mouse moved to select 'UnMarried' marital status
@@ -111,6 +118,13 @@ def textFields():
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("IT") # Functional Department Added
+
+    # Scroll the screen
+    driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
+
+    
+    shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
+    shortTextFields.send_keys("Team Leader")
 
     return "All Text Fields completed for this Page-2"
 
@@ -225,8 +239,10 @@ def addLocation():
     
     locationElement.clear()
     print("Location: Text Field Cleared")
+
+    locations = ['Gurgaon, Haryana', 'Delhi']
+    locationElement.send_keys(random.choice(locations))
     
-    locationElement.send_keys("Gurgaon")
     return "Location:Gurgaon Added"
 
 def dropdownAction():
@@ -239,6 +255,7 @@ def dropdownAction():
     # Mouse moved to the 'Clear form' button of the pop up menu
     pyautogui.moveTo(x=850, y=850, duration=0.5)
     pyautogui.click()
+
     return "Private Company selected"
 
 
