@@ -41,7 +41,9 @@ middle_y = screen_height // 2
 def main():
 
     try:
-        counter = 0
+        counter = 0 # counter starts from 0
+
+        # while counter <1000:
 
         formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
         print(formCleared)
@@ -73,7 +75,12 @@ def main():
         page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
         print(page_Two_Radio_Buttons_Clicked)
 
-        counter += 1
+        '''Page 1 and Page 2 submission ends here'''
+
+        page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
+        print(page_Three_Radio_Button_Clicked)
+
+        counter += 1 # Counter increases after every successful form submission
         print(counter)
 
         time.sleep(100)
@@ -84,53 +91,158 @@ def main():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+
 def radio_Buttons_Page_Three():
 
-
-def radio_Buttons_Page_Two():
     # Page Scrolled down
     pageScroll(13)
 
-    # Move the cursor to "male to female ratio in high visibility roles" section 
+    # Move the cursor to "related to flexible timings" section 
     pyautogui.moveTo(x=654, y=428, duration=0.5)
     pyautogui.click()
 
-    # Move the cursor to "authority to control decisions" section
-    pyautogui.moveTo(x=645, y=834, duration=0.5)
-    pyautogui.click()
+    return "Page 3 Completed"
+
+
+def radio_Buttons_Page_Two():
 
     # Page Scrolled down
-    pageScroll(17)
+    pageScroll(13)
 
-    # Move the cursor to "less informal gatherings" section
-    pyautogui.moveTo(x=650, y=363, duration=0.5)
+    '''select random option for Male to Female Ratio in high visibility roles'''
+
+    # Define the coordinates
+    x1, y1 = 698, 325
+    x2, y2 = 636, 381
+    x3, y3 = 654, 428
+    x4, y4 = 638, 481
+    x5, y5 = 686, 525
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "male to female ratio in high visibility roles" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
     pyautogui.click()
+
+
+    '''select random option for Authority to Control Decisions'''
+    # Define the coordinates
+    x1, y1 = 683, 735
+    x2, y2 = 640, 785
+    x3, y3 = 667, 832
+    x4, y4 = 648, 890
+    x5, y5 = 700, 932
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "authority to control decisions" section
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(17)
+    
+    
+    '''select random option for less informal gatherings'''
+    # Define the coordinates
+    x1, y1 = 697, 258
+    x2, y2 = 623, 308
+    x3, y3 = 669, 360
+    x4, y4 = 629, 409
+    x5, y5 = 678, 461
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
+    pyautogui.click()
+
+
+    '''select random option for be a part of informal gathering'''
+    # Define the coordinates
+    x1, y1 = 660, 665
+    x2, y2 = 657, 721
+    x3, y3 = 646, 766
+    x4, y4 = 627, 820
+    x5, y5 = 704, 870
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
 
     # Move the cursor to "be a part of informal gathering" section 
-    pyautogui.moveTo(x=645, y=816, duration=0.5)
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
     pyautogui.click()
 
-    # Page Scrolled down
+
+    '''Page Scrolled'''
     pageScroll(17)
 
+
+    '''select random option for interests and hobbies'''
+    # Define the coordinates
+    x1, y1 = 741, 228
+    x2, y2 = 637, 277
+    x3, y3 = 666, 326
+    x4, y4 = 654, 375
+    x5, y5 = 681, 424
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+    
     # Move the cursor to "interests and hobbies" section 
-    pyautogui.moveTo(x=637, y=376, duration=0.5)
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
     pyautogui.click()
 
-    # Move the cursor to "enough qualified female managers" section 
-    pyautogui.moveTo(x=634, y=733, duration=0.5)
+
+    '''select random option for enough qualified female managers'''
+    # Define the coordinates
+    x1, y1 = 665, 633
+    x2, y2 = 628, 681
+    x3, y3 = 646, 732
+    x4, y4 = 651, 779
+    x5, y5 = 698, 834
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
     pyautogui.click()
 
-    # Page Scrolled down
+    time.sleep(2000)    
+    '''Page Scrolled'''
     pageScroll(15)
 
-    # Move the cursor to "enough qualified female managers" section 
+
+    # Move the cursor to "provides mentorship and counselling" section 
     pyautogui.moveTo(x=640, y=440, duration=0.5)
     pyautogui.click()
 
-    # Move the cursor to "enough qualified female managers" section 
+    # Move the cursor to "regard my supervisor" section 
     pyautogui.moveTo(x=638, y=817, duration=0.5)
     pyautogui.click()
+
+    time.sleep(1000000)
 
     # Page Scrolled down
     pageScroll(15)
@@ -161,7 +273,7 @@ def radio_Buttons_Page_Two():
     xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
     nextButton(xpath)
 
-    return "Page - 2: Radio Buttons Clicked successfully"
+    return "Page 2 Completed"
 
 def textFields():
 
@@ -180,18 +292,60 @@ def textFields():
     pyautogui.click()
     
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    shortTextFields.send_keys("8861037076") # Contact number added
+    shortTextFields.send_keys(generate_random_mobile_number()) # Contact number added
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("priyankasharma324@gmail.com") # Email added
 
+    
+    '''Highest Qualification START'''
+    
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    shortTextFields.send_keys("Graduate") # Highest Qualification added
+    
+    highest_Qualification = ['B.Tech', 'M.Tech']
+    # Define the probabilities
+    probabilities = [0.70, 0.30]
 
+    # Choose between the two sets of coordinates based on probabilities
+    qualification = random.choices(highest_Qualification, weights=probabilities)[0]
+    
+    shortTextFields.send_keys(qualification) # Highest Qualification added
+    
+    '''Highest Qualification selection END'''
+    
+    
+    '''Oraganization Name and Type'''
+    
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[10]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    shortTextFields.send_keys("TCS - IT") # Organization Name and Type Added
+    
+    organizationName = [
+        "Tata Consultancy Services (TCS)",
+        "Infosys",
+        "Wipro Limited",
+        "Tech Mahindra",
+        "Accenture India",
+        "Capgemini",
+        "Cognizant Technology Solutions",
+        "Genpact",
+        "SAP Labs India",
+        "Oracle India",
+        "TATA Elxsi"
+        "Deloitte India",
+        "Ernst & Young (EY)"
+    ]
 
-    randomNumber = [1,2,3]
+    # Define the probabilities
+    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05]
+
+    # Choose between the two sets of coordinates based on probabilities
+    companyName = random.choices(organizationName, weights=probabilities)[0]
+    
+    shortTextFields.send_keys(companyName) # Organization Name and Type Added Randomly
+    
+    '''Oraganization Name and Type END'''
+
+
+    randomNumber = [1,2,3] # List of three numbers
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[11]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Professional Experience Added
@@ -208,7 +362,9 @@ def textFields():
     # Scroll the screen to the 'Designation' Section
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
-    shortTextFields.send_keys("Team Leader")
+    
+    designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer']
+    shortTextFields.send_keys(random.choice(designation)) # Team Designation selected randomly
 
     return "All Text Fields completed for this Page-2"
 
@@ -351,5 +507,24 @@ def pageScroll(n):
     # n clicks
     for _ in range(n):
         pyautogui.click()
+
+
+
+'''This script generate random numbers each time function is called and cross checks if the number already exists before return the number'''
+
+# Set to store generated numbers
+generated_numbers = set()
+
+def generate_random_mobile_number():
+    global generated_numbers
+    while True:
+        # Generate a random 10-digit number
+        random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
+        # Concatenate '+91' with the random digits
+        number = '+91 ' + random_digits
+        # Check if the number is already generated
+        if number not in generated_numbers:
+            generated_numbers.add(number)
+            return number
 
 main()
