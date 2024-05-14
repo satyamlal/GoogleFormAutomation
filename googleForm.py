@@ -10,6 +10,7 @@ from selenium.common.exceptions import TimeoutException
 import pyautogui
 import csv
 import random
+import string
 import time
 
 
@@ -66,10 +67,10 @@ def main():
         print(consentButtonClicked)
         time.sleep(1)
 
-        nameAdded = nameField() # This function is used to fill the text field
+        nameAdded = nameField() # This function is used to fill the name text field
         print(nameAdded)
 
-        ageAdded = ageField() # This function is used to fill the text field
+        ageAdded = ageField() # This function is used to fill the age text field
         print(ageAdded)
 
         page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
@@ -229,23 +230,50 @@ def radio_Buttons_Page_Two():
     pyautogui.moveTo(x=x, y=y, duration=0.5)
     pyautogui.click()
 
-    time.sleep(2000)    
+    '''Page Scrolled'''
+    pageScroll(15)
+
+ 
+    '''select random option for provides mentorship and counselling'''
+    # Define the coordinates
+    x1, y1 = 662, 289
+    x2, y2 = 638, 340
+    x3, y3 = 655, 388
+    x4, y4 = 646, 437
+    x5, y5 = 681, 488
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
+    pyautogui.click()
+
+
+    '''select random option for regard my supervisor'''
+    # Define the coordinates
+    x1, y1 = 670, 666
+    x2, y2 = 636, 717
+    x3, y3 = 660, 767
+    x4, y4 = 640, 818
+    x5, y5 = 666, 864
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
+    pyautogui.click()
+
+
     '''Page Scrolled'''
     pageScroll(15)
 
 
-    # Move the cursor to "provides mentorship and counselling" section 
-    pyautogui.moveTo(x=640, y=440, duration=0.5)
-    pyautogui.click()
-
-    # Move the cursor to "regard my supervisor" section 
-    pyautogui.moveTo(x=638, y=817, duration=0.5)
-    pyautogui.click()
-
     time.sleep(1000000)
-
-    # Page Scrolled down
-    pageScroll(15)
 
     # Move the cursor to "gender-neutral and supportive" section 
     pyautogui.moveTo(x=650, y=492, duration=0.5)
@@ -291,25 +319,40 @@ def textFields():
     pyautogui.moveTo(x=x, y=y, duration=0.5)
     pyautogui.click()
     
+
+    '''Random Contact Number Generated STARTS HERE'''
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    
     shortTextFields.send_keys(generate_random_mobile_number()) # Contact number added
+    '''Random Contact Number Generated ENDS HERE'''
 
+
+    '''Random Email Generated STARTS HERE'''
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    shortTextFields.send_keys("priyankasharma324@gmail.com") # Email added
+    fullName, emailAddress = generate_random_female_data() # Random name and email generated for female    
+    print("Email Address added in the text field:", emailAddress)
+    print("Name:", fullName)
 
+    shortTextFields.send_keys(emailAddress) # Email added
+    print("Email Address Added Successfully")
+
+    '''Random Email Generated END HERE'''
+    
     
     '''Highest Qualification START'''
     
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     
     highest_Qualification = ['B.Tech', 'M.Tech']
+
     # Define the probabilities
     probabilities = [0.70, 0.30]
 
-    # Choose between the two sets of coordinates based on probabilities
+    # Random choice of highest Qualification based on the probability
     qualification = random.choices(highest_Qualification, weights=probabilities)[0]
-    
+
     shortTextFields.send_keys(qualification) # Highest Qualification added
+    print("Highest Qualification Added Successfully")
     
     '''Highest Qualification selection END'''
     
@@ -329,9 +372,9 @@ def textFields():
         "Genpact",
         "SAP Labs India",
         "Oracle India",
-        "TATA Elxsi"
+        "TATA Elxsi",
         "Deloitte India",
-        "Ernst & Young (EY)"
+        "Ernst & Young (EY)",
     ]
 
     # Define the probabilities
@@ -341,6 +384,7 @@ def textFields():
     companyName = random.choices(organizationName, weights=probabilities)[0]
     
     shortTextFields.send_keys(companyName) # Organization Name and Type Added Randomly
+    print("Organization Name Added")
     
     '''Oraganization Name and Type END'''
 
@@ -372,7 +416,6 @@ def textFields():
 def ageField():
     # Wait for input field to be visible and clickable
     ageTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[5]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    print("Age Text Field: Found")
     ageTextField.clear()
     print("Age Text Field Cleared")
 
@@ -395,7 +438,13 @@ def nameField():
     # driver.execute_script("arguments[0].scrollIntoView(true);", nameTextField) # Wait for a short time to ensure the scroll operation is completed
     nameTextField.clear()
     print("Name Text Field Cleared")
-    nameTextField.send_keys("Priyanka Sharma")
+
+    fullName, emailAddress = generate_random_female_data() # Random name and email generated for female
+    
+    nameTextField.send_keys(fullName) # Name Added
+
+    print("Full Name Printed in the Name Field:", fullName) #
+    print("Email Address:", emailAddress)
     
     return "Name Added"
 
@@ -481,10 +530,12 @@ def addLocation():
     locationElement.clear()
     print("Location: Text Field Cleared")
 
-    locations = ['Gurgaon, Haryana', 'Delhi']
-    locationElement.send_keys(random.choice(locations))
+    locations = ['Gurgaon', 'Delhi']
+    probabilities = [0.7, 0.3]
     
-    return "Location:Gurgaon Added"
+    locationElement.send_keys(random.choices(locations, weights=probabilities)[0])
+    
+    return "Location Added"
 
 def dropdownAction():
     dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
@@ -510,7 +561,8 @@ def pageScroll(n):
 
 
 
-'''This script generate random numbers each time function is called and cross checks if the number already exists before return the number'''
+'''This script generate random numbers each time function is called and
+    cross checks if the number already exists before return the number'''
 
 # Set to store generated numbers
 generated_numbers = set()
@@ -526,5 +578,93 @@ def generate_random_mobile_number():
         if number not in generated_numbers:
             generated_numbers.add(number)
             return number
+
+
+
+'''This script generate random name with corresponding email each time without repetition'''
+
+# List of common First Names
+first_names = [
+    "Aaradhya", "Ananya", "Isha", "Jiya", "Kavya", "Mahi", "Riya",
+    "Shreya", "Aadhya", "Aanya", "Aarohi", "Aashi", "Anika", "Avni", "Gauri",
+    "Ishita", "Janvi", "Khushi", "Manvi", "Mehak", "Myra", "Navya", "Pari", "Roshni",
+    "Sanvi", "Sara", "Siya", "Suhani", "Tanisha", "Trisha", "Vani", "Vanya", "Anahita", "Aradhana",
+    "Ariana", "Aarushi", "Amaira", "Arya", "Dhriti", "Esha", "Hansa",
+    "Jhanvi", "Kashvi", "Kiara", "Kriti", "Mahira", "Nandini", "Nehal", "Pihu",
+    "Ridhi", "Riva", "Ruchi", "Saanvi", "Samaira", "Shruti", "Sneha", "Tanvi", "Tanya", "Trisha",
+    "Vaani", "Vanya", "Vedika", "Aadhira", "Aarna", "Aashi", "Akshara", "Anvi", "Aria",
+    "Ankita", "Bhavya", "Chahat", "Divya", "Devika",
+    "Kiran", "Lavanya", "Mansi", "Naina", "Navya",
+    "Nikita", "Poonam", "Palak", "Radhika", "Ritika", "Samaira", "Sanya", "Sonia", "Tara",
+    "Tanya", "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Zara", "Aarushi", "Aayat", "Anoushka",
+    "Amaya", "Anvita", "Anushka", "Aparna", "Charvi", "Dia", "Ishaani",
+    "Jhanvi", "Jiya", "Khushi", "Kanak", "Kavya", "Leela", "Mansi", "Nikita", "Neha",
+    "Priya", "Priti", "Ritika", "Saumya", "Kreeti", "Nimisha", "Nupur"
+    "Shanaya", "Tara", "Urvashi", "Vidhi", "Vanshika", "Yashvi",
+    "Anushree", "Anvi", "Bhavika", "Chitra", "Drishti", "Ishita",
+    "Ishika", "Ishita", "Kavya", "Lavanya", "Mehak", "Mehek", "Niharika",
+    "Nisha", "Pranjal", "Rachana", "Rashi", "Ruchika", "Saniya",
+    "Saanvi", "Shikha", "Trisha", "Urvi", "Vani","Aditi",
+    "Aadya", "Anisha", "Apoorva", "Anvita", "Aradhya", "Bhavana",
+    "Charu", "Deeksha", "Eva", "Ishani", "Ishwari", "Juhi", "Komal", "Kritika", "Lakshita",
+    "Mahika", "Nandini", "Navika", "Prerna", "Priyanka", "Ria",
+    "Rishika", "Shivangi", "Sarika", "Tanushree", "Tara", "Uma", "Vaishali", "Vidhi",
+    "Yamini", "Zara", "Anshika", "Anushka", "Arunima", "Bhavna", "Devanshi",
+    "Ishwarya", "Ishika", "Jagrati", "Kanishka", "Lavanya", "Mahima",
+    "Nitya", "Radha", "Reema", "Rhea", "Saisha", "Sakshi", "Sanya",
+    "Aarohi", "Anshika", "Aadya", "Anvi", "Alisha", "Arushi", "Anshu", "Ankita",
+    "Aashi", "Anupriya", "Anisha", "Bhoomi", "Chhaya", "Deepti", "Gauri", "Ishita",
+    "Jasmine", "Kashish", "Kashvi", "Kirti", "Lakshmi", "Mansi", "Minal", "Nandita",
+    "Pari", "Pragya", "Pooja", "Ritika", "Ritvi", "Sanya", "Shivani",
+    "Sakshi", "Srishti", "Tanishka", "Trisha", "Urvi", "Vidhi", "Vaishali", "Riddham"
+]
+
+# List of common North Indian surnames with corresponding probabilities
+last_names = [
+    ("Sharma", 25), 
+    ("Verma", 20), 
+    ("Jha", 20), 
+    ("Singh", 25), 
+    ("Yadav", 15), 
+    ("Gupta", 15), 
+    ("Malhotra", 5), 
+    ("Bhatia", 5), 
+    ("Chopra", 5), 
+    ("Mittal", 5),
+    ("Pandey", 7), 
+    ("Tiwari", 6), 
+    ("Shukla", 6), 
+    ("Garg", 4), 
+    ("Agarwal", 10),
+    ("Chauhan", 10), 
+    ("Sinha", 10), 
+    ("Joshi", 3),
+    ("Shah", 4),
+    ("Goyal", 4),
+    ("Choudhary", 6),
+    ("Kapoor", 2),
+    ("Khanna", 2),
+    ("Sachdeva", 3),
+    ("Arora", 2),
+]
+
+
+# Generate random Indian names and corresponding email addresses
+def generate_random_female_data():
+    first_name = random.choice(first_names)
+    # Select a single surname based on the probabilities
+    surname = random.choices(*zip(*last_names))[0]
+    full_name = first_name + " " + surname
+    email = generate_random_username(full_name)
+    return full_name, email.lower()  # Convert email address to lowercase
+
+def generate_random_username(name):
+    randomDigit = [3, 4, 5]
+    randomSelection = random.choice(randomDigit) # Randomly select digit to generate 3 or 4 or 5 numbers
+    random_number = ''.join(random.choices(string.digits, k=randomSelection)) # Random numbers of digit is generated and added at the end of the email
+    email_Addres_List = ['@gmail.com', '@outlook.com', '@yahoo.com']
+    # Concatenate the full name with the random number and append "@gmail.com"
+    return name.replace(" ", "") + random_number + random.choice(email_Addres_List)
+
 
 main()
