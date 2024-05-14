@@ -82,7 +82,7 @@ def main():
         print(page_Three_Radio_Button_Clicked)
 
         counter += 1 # Counter increases after every successful form submission
-        print(counter)
+        print("Counter:", counter)
 
         time.sleep(100)
 
@@ -349,8 +349,6 @@ def radio_Buttons_Page_Two():
 
     # Page Scrolled down
     pageScroll(15)
-
-    time.sleep(1000000)
 
     # Next Button clicked to enter page - 3
     xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
