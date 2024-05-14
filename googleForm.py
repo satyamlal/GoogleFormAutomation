@@ -273,29 +273,84 @@ def radio_Buttons_Page_Two():
     pageScroll(15)
 
 
+    '''select random option for gender-neutral and supportive'''
+    # Define the coordinates
+    x1, y1 = 725, 296
+    x2, y2 = 666, 343
+    x3, y3 = 644, 394
+    x4, y4 = 645, 444
+    x5, y5 = 663, 494
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.click()
+
+    
+    '''select random option for transparent and objective recruitment'''
+    # Define the coordinates
+    x1, y1 = 674, 741
+    x2, y2 = 659, 786
+    x3, y3 = 653, 838
+    x4, y4 = 653, 890
+    x5, y5 = 681, 944
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(15)
+
+
+    '''select random option for Promotion Criteria'''
+    # Define the coordinates
+    x1, y1 = 714, 326
+    x2, y2 = 648, 378
+    x3, y3 = 656, 428
+    x4, y4 = 644, 478
+    x5, y5 = 667, 528
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.click()
+
+
+    '''select random option for Female Managers at top levels'''
+    # Define the coordinates
+    x1, y1 = 676, 734
+    x2, y2 = 639, 784
+    x3, y3 = 656, 834
+    x4, y4 = 653, 884
+    x5, y5 = 684, 932
+
+    # Define the probabilities
+    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.click()
+
+    # Page Scrolled down
+    pageScroll(15)
+
     time.sleep(1000000)
-
-    # Move the cursor to "gender-neutral and supportive" section 
-    pyautogui.moveTo(x=650, y=492, duration=0.5)
-    pyautogui.click()
-
-    # Move the cursor to "transparent and objective recruitment" section 
-    pyautogui.moveTo(x=638, y=850, duration=0.5)
-    pyautogui.click()
-
-    # Page Scrolled down
-    pageScroll(15)
-
-    # Move the cursor to "promotion criteria" section 
-    pyautogui.moveTo(x=650, y=492, duration=0.5)
-    pyautogui.click()
-
-    # Move the cursor to "female managers at top levels" section 
-    pyautogui.moveTo(x=637, y=884, duration=0.5)
-    pyautogui.click()
-
-    # Page Scrolled down
-    pageScroll(15)
 
     # Next Button clicked to enter page - 3
     xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
