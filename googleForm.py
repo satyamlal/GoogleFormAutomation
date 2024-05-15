@@ -73,19 +73,43 @@ def main():
         ageAdded = ageField() # This function is used to fill the age text field
         print(ageAdded)
 
+        '''Page 1 and Page 2 submission STARTS HERE'''
+        
         page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
         print(page_Two_Radio_Buttons_Clicked)
 
-        '''Page 1 and Page 2 submission ends here'''
+        '''Page 1 and Page 2 submission ENDS HERE'''
+
+
+        # Next Button clicked to enter page - 3
+        xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
+        nextButton(xpath)
+
+
+        '''Page 3 submission STARTS HERE'''
 
         page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
         print(page_Three_Radio_Button_Clicked)
 
+        '''Page 3 submission ENDS HERE'''
+
+
+        # Next Button clicked to enter page - 4
+        xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
+        nextButton(xpath)
+
+        time.sleep(500)
+
+
+        '''Page 4 submission STARTS HERE'''
+
+        page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
+        print(page_Three_Radio_Button_Clicked)
+
+        '''Page 4 submission ENDS HERE'''
+
         counter += 1 # Counter increases after every successful form submission
         print("Counter:", counter)
-
-        time.sleep(100)
-
 
     except TimeoutException:
         print("Timeout occurred: Element not found within the specified time")
@@ -93,13 +117,174 @@ def main():
         print(f"An error occurred: {str(e)}")
 
 
+def radio_Buttons_Page_Four():
+
+
 def radio_Buttons_Page_Three():
 
-    # Page Scrolled down
+    '''Page Scrolled'''
     pageScroll(13)
 
+
+    '''select random option for organization is considerate of the requests'''
+    # Define the coordinates
+    x1, y1 = 659, 205
+    x2, y2 = 630, 251
+    x3, y3 = 659, 304
+    x4, y4 = 639, 354
+    x5, y5 = 670, 403
+
+    # Define the probabilities
+    probabilities = [0.01, 0.05, 0.40, 0.30, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
     # Move the cursor to "related to flexible timings" section 
-    pyautogui.moveTo(x=654, y=428, duration=0.5)
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for Company doesn't provide support facilities'''
+    # Define the coordinates
+    x1, y1 = 719, 583
+    x2, y2 = 664, 632
+    x3, y3 = 632, 683
+    x4, y4 = 653, 734
+    x5, y5 = 676, 783
+
+    # Define the probabilities
+    probabilities = [0.01, 0.25, 0.35, 0.10, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(13)
+
+
+    '''select random option for policies related to reentry of employees'''
+    # Define the coordinates
+    x1, y1 = 649, 309
+    x2, y2 = 642, 358
+    x3, y3 = 640, 409
+    x4, y4 = 655, 460
+    x5, y5 = 658, 508
+
+    # Define the probabilities
+    probabilities = [0.01, 0.03, 0.40, 0.15, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for paid menstrual leaves'''
+    # Define the coordinates
+    x1, y1 = 657, 688
+    x2, y2 = 648, 737
+    x3, y3 = 629, 787
+    x4, y4 = 644, 837
+    x5, y5 = 630, 884
+
+    # Define the probabilities
+    probabilities = [0.01, 0.20, 0.40, 0.05, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(15)
+
+
+    '''select random option for maternity leaves are honored'''
+    # Define the coordinates
+    x1, y1 = 649, 342
+    x2, y2 = 650, 393
+    x3, y3 = 638, 442
+    x4, y4 = 648, 492
+    x5, y5 = 666, 542
+
+    # Define the probabilities
+    probabilities = [0.01, 0.10, 0.25, 0.40, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+    '''select random option for does not provide transportation facilities'''
+    # Define the coordinates
+    x1, y1 = 595, 753
+    x2, y2 = 595, 800
+    x3, y3 = 595, 849
+    x4, y4 = 595, 903
+    x5, y5 = 595, 949
+
+    # Define the probabilities
+    probabilities = [0.01, 0.60, 0.35, 0.10, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+    
+    '''Page Scrolled'''
+    pageScroll(17)
+
+
+    '''select random option for higher scope of women representation in the board positions'''
+    # Define the coordinates
+    x1, y1 = 592, 279
+    x2, y2 = 594, 328
+    x3, y3 = 592, 379
+    x4, y4 = 594, 430
+    x5, y5 = 592, 480
+
+    # Define the probabilities
+    probabilities = [0.01, 0.50, 0.35, 0.05, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for several important positions are occupied by the same set of women managers'''
+    # Define the coordinates
+    x1, y1 = 628, 682
+    x2, y2 = 649, 733
+    x3, y3 = 637, 782
+    x4, y4 = 649, 832
+    x5, y5 = 658, 883
+
+    # Define the probabilities
+    probabilities = [0.01, 0.10, 0.65, 0.05, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
     pyautogui.click()
 
     return "Page 3 Completed"
@@ -107,7 +292,7 @@ def radio_Buttons_Page_Three():
 
 def radio_Buttons_Page_Two():
 
-    # Page Scrolled down
+    '''Page Scrolled'''
     pageScroll(13)
 
     '''select random option for Male to Female Ratio in high visibility roles'''
@@ -120,7 +305,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 686, 525
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.05, 0.40, 0.30, 0.01]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -139,7 +324,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 700, 932
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.05, 0.50, 0.30, 0.01]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -162,7 +347,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 678, 461
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.05, 0.40, 0.30, 0.15, 0.02]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -180,7 +365,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 704, 870
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.10, 0.35, 0.40]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -203,7 +388,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 681, 424
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.05, 0.40, 0.50]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -222,7 +407,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 698, 834
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.10, 0.40, 0.30, 0.03]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -243,7 +428,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 681, 488
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.10, 0.40, 0.30, 0.02]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -261,7 +446,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 666, 864
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.35, 0.45, 0.12]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -282,7 +467,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 663, 494
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.01, 0.25, 0.40, 0.15]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -299,7 +484,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 681, 944
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.35, 0.50, 0.02]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -321,7 +506,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 667, 528
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.10, 0.50, 0.35]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -339,7 +524,7 @@ def radio_Buttons_Page_Two():
     x5, y5 = 684, 932
 
     # Define the probabilities
-    probabilities = [0.05, 0.15, 0.40, 0.30, 0.03]
+    probabilities = [0.01, 0.02, 0.30, 0.50, 0.25]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -350,14 +535,11 @@ def radio_Buttons_Page_Two():
     # Page Scrolled down
     pageScroll(15)
 
-    # Next Button clicked to enter page - 3
-    xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
-    nextButton(xpath)
-
     return "Page 2 Completed"
 
 def textFields():
 
+    '''select random option for Married and UnMarried Marital Status'''
     # Define the coordinates
     x1, y1 = 647, 347
     x2, y2 = 650, 400
@@ -621,17 +803,24 @@ def pageScroll(n):
 generated_numbers = set()
 
 def generate_random_mobile_number():
+    
     global generated_numbers
+    
     while True:
         # Generate a random 10-digit number
         random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
+
+        # Define the prefixes with corresponding probabilities
+        prefix = ['+91', '0', '']
+        probabilities = [0.6, 0.3, 0.4]
+
         # Concatenate '+91' with the random digits
-        number = '+91 ' + random_digits
+        number = random.choice(prefix, weights=probabilities) + random_digits
+
         # Check if the number is already generated
         if number not in generated_numbers:
             generated_numbers.add(number)
             return number
-
 
 
 '''This script generate random name with corresponding email each time without repetition'''
