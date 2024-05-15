@@ -45,6 +45,7 @@ def main():
         counter = 0 # counter starts from 0
 
         # while counter <1000:
+        print("----------------------------PAGE 1 STARTED----------------------------------")
 
         formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
         print(formCleared)
@@ -87,24 +88,23 @@ def main():
 
 
         '''Page 3 submission STARTS HERE'''
+        print("----------------------------PAGE 3 STARTED----------------------------------")
 
         page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
         print(page_Three_Radio_Button_Clicked)
+        print("All Radio Buttons Clicked Successfully")
 
         '''Page 3 submission ENDS HERE'''
 
-
-        # Next Button clicked to enter page - 4
+        print("----------------------------PAGE 4 STARTED----------------------------------")
+        
         xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
-        nextButton(xpath)
-
-        time.sleep(500)
-
+        nextButton(xpath) # Next Button clicked to enter page - 4
 
         '''Page 4 submission STARTS HERE'''
 
-        page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
-        print(page_Three_Radio_Button_Clicked)
+        # page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
+        # print(page_Three_Radio_Button_Clicked)
 
         '''Page 4 submission ENDS HERE'''
 
@@ -117,7 +117,7 @@ def main():
         print(f"An error occurred: {str(e)}")
 
 
-def radio_Buttons_Page_Four():
+# def radio_Buttons_Page_Four():
 
 
 def radio_Buttons_Page_Three():
@@ -537,7 +537,7 @@ def radio_Buttons_Page_Two():
 
     return "Page 2 Completed"
 
-def textFields():
+def page_Two_Text_Fields():
 
     '''select random option for Married and UnMarried Marital Status'''
     # Define the coordinates
@@ -551,13 +551,14 @@ def textFields():
     x, y = random.choices([(x1, y1), (x2, y2)], weights=probabilities)[0]
 
     # Mouse moved to select 'UnMarried' or 'Married' marital status
-    pyautogui.moveTo(x=x, y=y, duration=0.5)
+    pyautogui.moveTo(x=x, y=y, duration=0.8)
     pyautogui.click()
+    print("--------------------------------------------------------------")
+    print("Marital Status Clicked")
     
 
     '''Random Contact Number Generated STARTS HERE'''
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
     shortTextFields.send_keys(generate_random_mobile_number()) # Contact number added
     '''Random Contact Number Generated ENDS HERE'''
 
@@ -569,9 +570,8 @@ def textFields():
     print("Name:", fullName)
 
     shortTextFields.send_keys(emailAddress) # Email added
-    print("Email Address Added Successfully")
 
-    '''Random Email Generated END HERE'''
+    '''Random Email Generated ENDS HERE'''
     
     
     '''Highest Qualification START'''
@@ -587,6 +587,7 @@ def textFields():
     qualification = random.choices(highest_Qualification, weights=probabilities)[0]
 
     shortTextFields.send_keys(qualification) # Highest Qualification added
+    print("--------------------------------------------------------------")
     print("Highest Qualification Added Successfully")
     
     '''Highest Qualification selection END'''
@@ -619,6 +620,7 @@ def textFields():
     companyName = random.choices(organizationName, weights=probabilities)[0]
     
     shortTextFields.send_keys(companyName) # Organization Name and Type Added Randomly
+    print("----------------------------------------------------------------------------")
     print("Organization Name Added")
     
     '''Oraganization Name and Type END'''
@@ -652,34 +654,36 @@ def ageField():
     # Wait for input field to be visible and clickable
     ageTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[5]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     ageTextField.clear()
-    print("Age Text Field Cleared")
 
     age = [21,22,23,24,25]
     ageTextField.send_keys(random.choice(age))
+    print("----------------------------------------------------------------------------")
+    print("New Age Filled")
 
     # Scroll the element into view
     driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
-    textFields()
-    
+    page_Two_Text_Fields()
+    print("----------------------------------------------------------------------------")
+
     return "Age Added"
 
 
 def nameField():
     # Wait for input field to be visible and clickable
     nameTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    print("Name Text Field: Found")
     
     # Scroll the element into view
     # driver.execute_script("arguments[0].scrollIntoView(true);", nameTextField) # Wait for a short time to ensure the scroll operation is completed
     nameTextField.clear()
-    print("Name Text Field Cleared")
 
     fullName, emailAddress = generate_random_female_data() # Random name and email generated for female
     
     nameTextField.send_keys(fullName) # Name Added
 
-    print("Full Name Printed in the Name Field:", fullName) #
+    print("----------------------------------------------------------------------------")
+    print("Full Name Printed in the Name Field:", fullName)
     print("Email Address:", emailAddress)
+    print("----------------------------------------------------------------------------")
     
     return "Name Added"
 
@@ -690,17 +694,15 @@ def consentButton():
     
     # Scroll the element into view (optional)
     driver.execute_script("arguments[0].scrollIntoView(true);", consentButtonFound)
-    print("Screen Scrolled down to the consent Part")
 
     # drop down menu arrow clicked
     dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
-    print("Dropdown menu Found")
     dropdownMenu.click()
-    print("Dropdown menu Arrow Clicked")
 
     # Mouse moved to the 'Clear form' button of the pop up menu
     pyautogui.moveTo(x=650, y=300, duration=0.5)  
     pyautogui.click()
+    print("----------------------------PAGE 2 STARTED----------------------------------")
 
     return "Consent set to YES"
 
@@ -734,7 +736,6 @@ def clearForm():
 def emailChecked():
     # Find the element you want to interact with
     # emailClass = driver.find_element(By.XPATH, '//*[@id="i5"]/div[2]')
-    print("Email Class Found")
 
     # Wait for email button to be clickable
     email_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'uHMk6b')))
@@ -746,24 +747,20 @@ def emailChecked():
 def addFiCode():
     # Wait for fiCodeElement input field to be visible and clickable
     fiCodeElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    print("FI Code Text Field: Found")
     
     # Scroll the element into view
     driver.execute_script("arguments[0].scrollIntoView(true);", fiCodeElement) # Wait for a short time to ensure the scroll operation is completed
     fiCodeElement.clear()
     
-    print("FI Code: Text Field Cleared")
     fiCodeElement.send_keys("12")
     
-    return "FI Code: 12 - Added in the Text Field"
+    return "FI Code: Text Field Cleared and Added 12 in it"
 
 def addLocation():
     # Wait for location input field to be visible and clickable
     locationElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    print("Location Text Field Found")
     
     locationElement.clear()
-    print("Location: Text Field Cleared")
 
     locations = ['Gurgaon', 'Delhi']
     probabilities = [0.7, 0.3]
@@ -774,9 +771,7 @@ def addLocation():
 
 def dropdownAction():
     dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
-    print("Dropdown menu Found")
     dropdownMenu.click()
-    print("Dropdown menu Arrow Clicked")
     time.sleep(0.5)
 
     # Mouse moved to the 'Clear form' button of the pop up menu
@@ -807,6 +802,7 @@ def generate_random_mobile_number():
     global generated_numbers
     
     while True:
+        print("----------------------------------------------------------------------------")
         # Generate a random 10-digit number
         random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
 
@@ -815,7 +811,10 @@ def generate_random_mobile_number():
         probabilities = [0.6, 0.3, 0.4]
 
         # Concatenate '+91' with the random digits
-        number = random.choice(prefix, weights=probabilities) + random_digits
+        number_prefix = random.choices(prefix, weights=probabilities)[0]
+        number = number_prefix + random_digits
+        print("Mobile Number Created")
+
 
         # Check if the number is already generated
         if number not in generated_numbers:
