@@ -8,12 +8,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 import pyautogui
+from datetime import datetime
 import csv
 import random
 import string
 import time
-import tkinter as tk
-import signal
 
 # Disable the PyAutoGUI fail-safe
 pyautogui.FAILSAFE = False # This will prevent the fail-safe trigger from occurring when your mouse moves to a corner of the screen.
@@ -33,7 +32,6 @@ driver.implicitly_wait(5)  # Implicit wait to wait for elements to be available
 
 # Open the Google Form URL
 driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
-# driver.get('https://forms.gle/K7cgQSTwYgB6FScm8')
 print("Link Opened")
 time.sleep(5)
 
@@ -44,15 +42,13 @@ screen_width, screen_height = pyautogui.size()
 middle_x = screen_width // 2
 middle_y = screen_height // 2
 
-counter = 0  # Initialize the counter globally
-
+counter = 1  # Initialize the counter globally
 
 def radio_Buttons_Page_Eight(): # Page 8: Impact on the performance due to the perception of glass ceiling
     time.sleep(3)
 
     '''Page Scrolled'''
     pageScroll(10)
-
     
     '''select random option for more women participation'''
     # Define the coordinates
@@ -1173,7 +1169,7 @@ def page_Two_Text_Fields():
     x2, y2 = 650, 400
 
     # Define the probabilities
-    probabilities = [0.15, 0.85]
+    probabilities = [0.07, 0.90]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2)], weights=probabilities)[0]
@@ -1422,40 +1418,6 @@ def pageScroll(n):
         pyautogui.click()
 
 
-
-'''This script generate random numbers each time function is called and
-    cross checks if the number already exists before return the number'''
-
-# Set to store generated numbers
-generated_numbers = set()
-
-def generate_random_mobile_number():
-    
-    global generated_numbers
-    
-    while True:
-        print("----------------------------------------------------------------------------")
-        # Generate a random 10-digit number
-        random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
-
-        # Define the prefixes with corresponding probabilities
-        prefix = ['+91', '0', '']
-        probabilities = [0.6, 0.3, 0.4]
-
-        # Concatenate '+91' with the random digits
-        number_prefix = random.choices(prefix, weights=probabilities)[0]
-        number = number_prefix + random_digits
-        print("Mobile Number Created")
-
-
-        # Check if the number is already generated
-        if number not in generated_numbers:
-            generated_numbers.add(number)
-            return number
-
-
-'''This script generate random name with corresponding email each time without repetition'''
-
 # List of common First Names
 first_names = [
     "Aaradhya", "Ananya", "Jiya", "Kavya", "Mahi", "Riya",
@@ -1467,7 +1429,7 @@ first_names = [
     "Ridhi", "Riva", "Ruchi", "Shruti", "Sneha", "Tanvi",
     "Vaani", "Vanya", "Akshara", "Anvi", "Aria", "Lakshita",
     "Ankita", "Bhavya", "Chahat", "Divya", "Devika", "Shivani",
-    "Kiran", "Naina", "Navya", "Mehek",  "Tanya",
+    "Naina", "Navya", "Mehek",  "Tanya",
     "Nikita", "Poonam", "Palak", "Radhika", "Sonia",
     "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Aarushi",
     "Amaya", "Aparna", "Dia", "Ishaani", "Nupur", "Nandita",
@@ -1496,30 +1458,57 @@ first_names = [
 last_names = [
     ("Sharma", 25), 
     ("Verma", 20), 
-    ("Jha", 20), 
-    ("Singh", 25), 
-    ("Yadav", 15), 
+    ("Jha", 20),
+    ("Singh", 15),
+    ("Yadav", 10),
     ("Gupta", 15), 
-    ("Malhotra", 5), 
-    ("Bhatia", 5), 
-    ("Chopra", 5), 
+    ("Malhotra", 5),
+    ("Bhatia", 5),
+    ("Chopra", 5),
     ("Mittal", 5),
-    ("Pandey", 7), 
-    ("Tiwari", 6), 
-    ("Shukla", 6), 
-    ("Garg", 4), 
+    ("Pandey", 7),
+    ("Tiwari", 6),
+    ("Shukla", 6),
+    ("Garg", 4),
     ("Agarwal", 10),
-    ("Chauhan", 10), 
-    ("Sinha", 10), 
+    ("Chauhan", 10),
+    ("Sinha", 10),
     ("Joshi", 3),
     ("Shah", 4),
     ("Goyal", 4),
     ("Choudhary", 6),
     ("Kapoor", 2),
     ("Khanna", 2),
-    ("Sachdeva", 3),
     ("Arora", 2),
 ]
+
+
+'''This function generates random numbers each time it is called and cross checks if the number already exists before return the number'''
+
+# Set to store generated numbers
+generated_numbers = set()
+
+def generate_random_mobile_number():
+    
+    global generated_numbers
+    
+    while True:
+        # Generate a random 10-digit number
+        random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
+
+        # Define the prefixes with corresponding probabilities
+        prefix = ['+91', '0', '']
+        probabilities = [0.2, 0.3, 0.65]
+
+        # Concatenate '+91' with the random digits
+        number_prefix = random.choices(prefix, weights=probabilities)[0]
+        number = number_prefix + random_digits
+
+        # Check if the number is already generated
+        if number not in generated_numbers:
+            generated_numbers.add(number)
+            return number
+
 
 # Generate random Indian names and corresponding email addresses
 def generate_random_female_data():
@@ -1531,12 +1520,49 @@ def generate_random_female_data():
     return full_name, email.lower()  # Convert email address to lowercase
 
 def generate_random_username(name):
-    randomDigit = [3, 4, 5]
-    randomSelection = random.choice(randomDigit) # Randomly select digit to generate 3 or 4 or 5 numbers
-    random_number = ''.join(random.choices(string.digits, k=randomSelection)) # Random numbers of digit is generated and added at the end of the email
-    email_Addres_List = ['@gmail.com', '@outlook.com', '@yahoo.com']
-    # Concatenate the full name with the random number and append "@gmail.com"
-    return name.replace(" ", "") + random_number + random.choice(email_Addres_List)
+    random_digit = random.choice([3, 4, 5])  # Randomly select digit to generate 3, 4, or 5 numbers
+    random_number = ''.join(random.choices(string.digits, k=random_digit))  # Generate random numbers of digits
+    
+    # Probabilities for choosing whether to concatenate surname before first name or first name before surname
+    probabilities = [0.65, 0.45]
+    
+    # Choose whether to concatenate surname before first name or first name before surname
+    email_format = random.choices(['surname_first', 'first_surname'], weights=probabilities)[0]
+
+    if email_format == 'surname_first':
+        # Concatenate the surname before the first name
+        email_name = name.split()[1] + name.split()[0]
+    else:
+        # Concatenate the first name before the surname
+        email_name = name.split()[0] + name.split()[1]
+
+    email_address_list = ['@gmail.com', '@outlook.com', '@yahoo.com']
+    probabilities = [0.91, 0.05, 0.04]  # Probabilities for choosing email domains
+
+    # Choose email domain based on probabilities
+    email_domain = random.choices(email_address_list, weights=probabilities)[0]
+
+    # Concatenate the email name with the random number and append the selected email domain
+    return email_name + random_number + email_domain
+
+
+# Function to write data to CSV file
+def write_to_csv(data):
+    file_name = "google_Form_Female_Data.csv"
+    with open(file_name, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(data)
+
+def record_timestamp():
+    # Get current date and time
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    # Write two empty lines to CSV file
+    write_to_csv([])
+    write_to_csv([])
+
+    # Write timestamp to CSV file
+    write_to_csv(["Timestamp", timestamp])
 
 
 def main():
@@ -1544,7 +1570,17 @@ def main():
 
     try:
 
-        while counter < 3:
+        # Record timestamp before adding any other data
+        record_timestamp()
+
+        # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
+        write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
+
+        while counter <= 1:
+
+            fullName, emailAddress = generate_random_female_data()
+            mobileNumber = generate_random_mobile_number()
+
             print("----------------------------PAGE 1 STARTED----------------------------------")
 
             formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
@@ -1677,7 +1713,13 @@ def main():
             submitNextForm() # Click on 'Submit Next Form / Response'
 
             counter += 1 # Counter increases after every successful form submission
-        
+
+            # Write data to CSV file
+            write_to_csv([fullName, emailAddress, mobileNumber])
+            
+        # Write counter value to CSV file
+        write_to_csv(["Counter:", counter])
+
         print("~~~~~~~~~~~~~~~~~~~~")
         print("Counter:", counter)
         print("~~~~~~~~~~~~~~~~~~~~")
