@@ -15,24 +15,8 @@ import time
 import tkinter as tk
 import signal
 
-
-
-svc = webdriver.ChromeService(executable_path=binary_path)
-# Set up ChromeOptions
-options = webdriver.ChromeOptions()
-options.add_argument(r"user-data-dir=C:\Users\91844\AppData\Local\Google\Chrome\User Data")
-options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-
-# Initialize Chrome WebDriver with options
-driver = webdriver.Chrome(service=svc, options=options)
-driver.maximize_window()
-driver.implicitly_wait(5)  # Implicit wait to wait for elements to be available
-
-# Open the Google Form URL
-driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
-print("Link Opened")
-time.sleep(5)
+# Disable the PyAutoGUI fail-safe
+pyautogui.FAILSAFE = False # This will prevent the fail-safe trigger from occurring when your mouse moves to a corner of the screen.
 
 # Get the screen's dimensions
 screen_width, screen_height = pyautogui.size()
@@ -48,17 +32,33 @@ def popCounter():
     global counter
 
     # Create a popup window using Toplevel
-    popup = tk.Toplevel()
-    popup.geometry("300x100")
-    popup.title("Popup Window")
+    popup = tk.Toplevel(root)
+
+    # Set the window size and position
+    window_width = 230
+    window_height = 80
+
+    # Calculate the coordinates to position the window at the lowermost part
+    x_pos = 20  # Left margin
+    y_pos = 980  # 70 pixels up from the bottom
+
+    # Set the window size and position
+    popup.geometry(f"{window_width}x{window_height}+{x_pos}+{y_pos}")
+
+    popup.attributes("-topmost", True)
+    popup.title("Form Counter")
 
     # Display the counter value in the popup window
     counter_label = tk.Label(popup, text=f"Total Form(s) submitted: {counter}")
     counter_label.pack(pady=20)
 
-    # Function to handle closing the popup window
+    def handle_interrupt(signum, frame):
+        popup.destroy()  # Close the popup window when interrupted
+        root.quit()    # Exit the main loop
+
     def close_window():
-        popup.destroy()
+        popup.destroy()  # Close the popup window when the close button is clicked
+        root.quit()    # Exit the main loop
 
     # Bind the close window function to the window's close button
     popup.protocol("WM_DELETE_WINDOW", close_window)
@@ -70,6 +70,35 @@ def popCounter():
 
     # Start updating the counter label
     update_counter(counter_label)
+
+
+root = tk.Tk()
+root.withdraw()  # Hide the main window
+popCounter()
+try:
+    root.mainloop()
+except KeyboardInterrupt:
+    root.quit()  # Exit gracefully when Ctrl+C is pressed
+
+
+def openBrowser():
+    svc = webdriver.ChromeService(executable_path=binary_path)
+    # Set up ChromeOptions
+    options = webdriver.ChromeOptions()
+    options.add_argument(r"user-data-dir=C:\Users\91844\AppData\Local\Google\Chrome\User Data")
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+
+    # Initialize Chrome WebDriver with options
+    driver = webdriver.Chrome(service=svc, options=options)
+    driver.maximize_window()
+    driver.implicitly_wait(5)  # Implicit wait to wait for elements to be available
+
+    # Open the Google Form URL
+    driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
+    # driver.get('https://forms.gle/K7cgQSTwYgB6FScm8')
+    print("Link Opened")
+    time.sleep(5)
 
 
 
@@ -1570,8 +1599,10 @@ def main():
 
     try:
         # Create the popup window before the while loop starts
-        if counter <= 1:
+        if counter >= 0:
             popCounter()
+        
+        openBrowser()
 
         while counter < 3:
             print("----------------------------PAGE 1 STARTED----------------------------------")

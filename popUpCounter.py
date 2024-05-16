@@ -3,9 +3,20 @@ import signal
 
 def on_top():
     top = tk.Toplevel(root)
-    top.geometry("230x80+20+70")  # Set position 100px away from the left side and 100px down from the top
+
+    # Set the window size and position
+    window_width = 230
+    window_height = 80
+
+    # Calculate the coordinates to position the window at the lowermost part
+    x_pos = 20  # Left margin
+    y_pos = 780  # 70 pixels up from the bottom
+
+    # Set the window size and position
+    top.geometry(f"{window_width}x{window_height}+{x_pos}+{y_pos}")
+
     top.attributes("-topmost", True)
-    top.title("Popup Menu")
+    top.title("Form Counter")
 
     counter = tk.IntVar()
     counter.set(0)
