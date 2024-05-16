@@ -134,7 +134,6 @@ def main():
         print("----------------------------PAGE 6 STARTED----------------------------------")
 
         page_Six_Radio_Button_Clicked = radio_Buttons_Page_Six()
-        print("All Radion Button Clicked Successfully on Page - 6")
         print(page_Six_Radio_Button_Clicked)
 
         print("----------------------------PAGE 6 ENDS HERE-------------------------------")
@@ -150,17 +149,29 @@ def main():
         print("----------------------------PAGE 7 STARTED----------------------------------")
 
         page_Seven_Radio_Button_Clicked = radio_Buttons_Page_Seven()
-        print("All Radion Button Clicked Successfully on Page - 7")
         print(page_Seven_Radio_Button_Clicked)
 
         print("----------------------------PAGE 7 ENDS HERE-------------------------------")
 
         '''Page 7 submission ENDS HERE'''
 
-        # xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
-        # nextButton(xPath) # Next Button clicked to enter page - 7
+        xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
+        nextButton(xPath) # Next Button clicked to enter page - 8
 
 
+        '''Page 8 submission STARTS HERE'''
+        
+        print("----------------------------PAGE 8 STARTED----------------------------------")
+
+        page_Eight_Radio_Button_Clicked = radio_Buttons_Page_Eight()
+        print(page_Eight_Radio_Button_Clicked)
+
+        print("----------------------------PAGE 8 ENDS HERE-------------------------------")
+
+        '''Page 8 submission ENDS HERE'''
+
+        # xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
+        # nextButton(xPath) # Next Button clicked to enter page - 8
 
         counter += 1 # Counter increases after every successful form submission
         print("~~~~~~~~~~~~~~~~~~~~")
@@ -175,8 +186,276 @@ def main():
         print(f"An error occurred: {str(e)}")
 
 
+def radio_Buttons_Page_Eight(): # Page 8: Impact on the performance due to the perception of glass ceiling
+    time.sleep(3)
+
+    '''Page Scrolled'''
+    pageScroll(10)
+
+    
+    '''select random option for more women participation'''
+    # Define the coordinates
+    x1, y1 = 593, 356
+    x2, y2 = 593, 405
+    x3, y3 = 590, 456
+    x4, y4 = 593, 505
+    x5, y5 = 593, 557
+
+    # Define the probabilities
+    probabilities = [0.02, 0.03, 0.37, 0.77, 0.05]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for zero tolerance over harassment'''
+    # Define the coordinates
+    x1, y1 = 592, 895
+    x2, y2 = 594, 941
+    x3, y3 = 590, 993
+
+    # Define the probabilities
+    probabilities = [0.05, 0.77, 0.34]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(18)
+
+
+    '''select random option for Allowing more women to manage teams'''
+    # Define the coordinates
+    x1, y1 = 593, 399
+    x2, y2 = 593, 448
+    x3, y3 = 590, 500
+
+    # Define the probabilities
+    probabilities = [0.05, 0.77, 0.35]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for Women foster creativity'''
+    # Define the coordinates
+    x1, y1 = 593, 778
+    x2, y2 = 593, 827
+    x3, y3 = 590, 876
+
+    # Define the probabilities
+    probabilities = [0.02, 0.77, 0.45]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(16)
+
+
+    '''select random option for Having higher women representation at decision making roles'''
+    # Define the coordinates
+    x1, y1 = 592, 435
+    x2, y2 = 592, 483
+
+    # Define the probabilities
+    probabilities = [0.61, 0.23]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for Women qualities of  empathy and sensitivity lead to effective team management'''
+    # Define the coordinates
+    x1, y1 = 593, 793
+    x2, y2 = 593, 842
+    x3, y3 = 593, 890
+
+    # Define the probabilities
+    probabilities = [0.02, 0.87, 0.33]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(15)
+
+
+    '''select random option for Women contribute to business sustainability through less risky decisions'''
+    # Define the coordinates
+    x1, y1 = 593, 580
+    x2, y2 = 593, 633
+
+    # Define the probabilities
+    probabilities = [0.93, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    return "Page 8 Done: Full Form Submitted Completely"
+
+
+
 def radio_Buttons_Page_Seven(): # Page 7: Perception of Glass Ceiling
-    time.sleep(4)
+    time.sleep(3)
+
+    '''Page Scrolled'''
+    pageScroll(10)
+
+    '''select random option for women managers have to work harder than male'''
+    # Define the coordinates
+    x1, y1 = 592, 357
+    x2, y2 = 592, 407
+    x3, y3 = 592, 457
+    x4, y4 = 592, 505
+    x5, y5 = 592, 557
+
+    # Define the probabilities
+    probabilities = [0.02, 0.07, 0.10, 0.65, 0.10]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for women do not receive the same level of recognition like men'''
+    # Define the coordinates
+    x1, y1 = 595, 734
+    x2, y2 = 592, 784
+    x3, y3 = 592, 833
+    x4, y4 = 592, 884
+    x5, y5 = 593, 934
+
+    # Define the probabilities
+    probabilities = [0.02, 0.06, 0.10, 0.45, 0.12]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(17)
+
+
+    '''select random option for leadership in my company supports the view of “think managers, think male attitude'''
+    # Define the coordinates
+    x1, y1 = 593, 290
+    x2, y2 = 593, 338
+    x3, y3 = 592, 392
+    x4, y4 = 594, 439
+    x5, y5 = 591, 488
+
+    # Define the probabilities
+    probabilities = [0.01, 0.10, 0.40, 0.30, 0.06]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for female managers face career plateaus'''
+    # Define the coordinates
+    x1, y1 = 595, 696
+    x2, y2 = 592, 748
+    x3, y3 = 593, 797
+    x4, y4 = 593, 847
+    x5, y5 = 593, 895
+
+    # Define the probabilities
+    probabilities = [0.01, 0.07, 0.40, 0.30, 0.05]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''Page Scrolled'''
+    pageScroll(17)
+
+
+    '''select random option for male employees dominate the communication networks'''
+    # Define the coordinates
+    x1, y1 = 594, 283
+    x2, y2 = 594, 333
+    x3, y3 = 594, 388
+    x4, y4 = 592, 435
+    x5, y5 = 593, 482
+
+    # Define the probabilities
+    probabilities = [0.02, 0.07, 0.55, 0.25, 0.03]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+
+    '''select random option for situations of downsizing, women employees are removed first'''
+    # Define the coordinates
+    x1, y1 = 593, 661
+    x2, y2 = 593, 709
+    x3, y3 = 592, 761
+    x4, y4 = 592, 811
+    x5, y5 = 593, 861
+
+    # Define the probabilities
+    probabilities = [0.05, 0.12, 0.75, 0.15, 0.01]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "related to flexible timings" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.3)
+    pyautogui.click()
+
+    return "All Radion Button Clicked Successfully on Page - 7"
 
 
 def radio_Buttons_Page_Six(): # Page 6: Perception of Differential treatment
