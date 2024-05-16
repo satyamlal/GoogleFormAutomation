@@ -12,6 +12,9 @@ import csv
 import random
 import string
 import time
+import tkinter as tk
+import signal
+
 
 
 svc = webdriver.ChromeService(executable_path=binary_path)
@@ -38,152 +41,36 @@ screen_width, screen_height = pyautogui.size()
 middle_x = screen_width // 2
 middle_y = screen_height // 2
 
-
-def main():
-
-    try:
-        counter = 0 # counter starts from 0
-
-        # while counter <1000:
-        print("----------------------------PAGE 1 STARTED----------------------------------")
-
-        formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
-        print(formCleared)
-
-        email_check = emailChecked() # This function is used for check box
-        print(email_check)
-        time.sleep(3)
-
-        fiCodeAdded = addFiCode() # This function is used to fill the text field
-        print(fiCodeAdded)
-
-        locationAdded = addLocation() # This function is used to fill the text field
-        print(locationAdded)
-
-        companySelected = dropdownAction() # This function is used for drop down menu
-        print(companySelected)
-        time.sleep(1)
-
-        consentButtonClicked = consentButton() # This function is used for drop down menu
-        print(consentButtonClicked)
-        time.sleep(1)
-
-        nameAdded = nameField() # This function is used to fill the name text field
-        print(nameAdded)
-
-        ageAdded = ageField() # This function is used to fill the age text field
-        print(ageAdded)
-
-        '''Page 1 and Page 2 submission STARTS HERE'''
-        
-        page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
-        print(page_Two_Radio_Buttons_Clicked)
-
-        '''Page 1 and Page 2 submission ENDS HERE'''
-
-        time.sleep(1) # Wait for few seconds before clicking the NEXT button
-
-        # Next Button clicked to enter page - 3
-        xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
-        nextButton(xpath)
+counter = 0  # Initialize the counter globally
 
 
-        '''Page 3 submission STARTS HERE'''
-        print("----------------------------PAGE 3 STARTED----------------------------------")
+def popCounter():
+    global counter
 
-        page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
-        print(page_Three_Radio_Button_Clicked)
-        print("All Radio Buttons Clicked Successfully")
+    # Create a popup window using Toplevel
+    popup = tk.Toplevel()
+    popup.geometry("300x100")
+    popup.title("Popup Window")
 
-        '''Page 3 submission ENDS HERE'''
+    # Display the counter value in the popup window
+    counter_label = tk.Label(popup, text=f"Total Form(s) submitted: {counter}")
+    counter_label.pack(pady=20)
 
-        print("----------------------------PAGE 4 STARTED----------------------------------")
-        
-        xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
-        nextButton(xpath) # Next Button clicked to enter page - 4
+    # Function to handle closing the popup window
+    def close_window():
+        popup.destroy()
 
-        '''Page 4 submission STARTS HERE'''
+    # Bind the close window function to the window's close button
+    popup.protocol("WM_DELETE_WINDOW", close_window)
 
-        page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
-        print("All Radion Button Clicked Successfully on Page - 4")
-        print(page_Four_Radio_Button_Clicked)
+    # Update the counter label text every second
+    def update_counter(counter_label):
+        counter_label.config(text=f"Total Form(s) submitted: {counter}")
+        popup.after(1000, update_counter, counter_label)  # Update every second
 
-        '''Page 4 submission ENDS HERE'''
+    # Start updating the counter label
+    update_counter(counter_label)
 
-        xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 4 Next Button
-        nextButton(xPath) # Next Button clicked to enter page - 5
-
-        time.sleep(4) # Wait for the new page to load properly
-
-        '''Page 5 submission STARTS HERE'''
-
-        print("----------------------------PAGE 5 STARTED----------------------------------")
-
-        page_Five_Radio_Button_Clicked = radio_Buttons_Page_Five()
-        print(page_Five_Radio_Button_Clicked)
-
-        print("----------------------------PAGE 5 ENDS HERE-------------------------------")
-
-        '''Page 5 submission ENDS HERE'''
-
-        xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 5 Next Button
-        nextButton(xPath) # Next Button clicked to enter page - 6
-
-        '''Page 6 submission STARTS HERE'''
-        
-        print("----------------------------PAGE 6 STARTED----------------------------------")
-
-        page_Six_Radio_Button_Clicked = radio_Buttons_Page_Six()
-        print(page_Six_Radio_Button_Clicked)
-
-        print("----------------------------PAGE 6 ENDS HERE-------------------------------")
-
-        '''Page 6 submission ENDS HERE'''
-
-        xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
-        nextButton(xPath) # Next Button clicked to enter page - 7
-
-
-        '''Page 7 submission STARTS HERE'''
-        
-        print("----------------------------PAGE 7 STARTED----------------------------------")
-
-        page_Seven_Radio_Button_Clicked = radio_Buttons_Page_Seven()
-        print(page_Seven_Radio_Button_Clicked)
-
-        print("----------------------------PAGE 7 ENDS HERE-------------------------------")
-
-        '''Page 7 submission ENDS HERE'''
-
-        xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
-        nextButton(xPath) # Next Button clicked to enter page - 8
-
-
-        '''Page 8 submission STARTS HERE'''
-        
-        print("----------------------------PAGE 8 STARTED----------------------------------")
-
-        page_Eight_Radio_Button_Clicked = radio_Buttons_Page_Eight()
-        print(page_Eight_Radio_Button_Clicked)
-
-        print("----------------------------PAGE 8 ENDS HERE-------------------------------")
-
-        '''Page 8 submission ENDS HERE'''
-
-        # xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
-        # nextButton(xPath) # Next Button clicked to enter page - 8
-
-        counter += 1 # Counter increases after every successful form submission
-        print("~~~~~~~~~~~~~~~~~~~~")
-        print("Counter:", counter)
-        print("~~~~~~~~~~~~~~~~~~~~")
-
-        time.sleep(20000)
-
-    except TimeoutException:
-        print("Timeout occurred: Element not found within the specified time")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
 
 
 def radio_Buttons_Page_Eight(): # Page 8: Impact on the performance due to the perception of glass ceiling
@@ -1472,6 +1359,12 @@ def consentButton():
     return "Consent set to YES"
 
 
+def submitNextForm(): # Click on 'Submit Another Response'
+    xPath = '/html/body/div[1]/div[2]/div[1]/div/div[4]/a'
+    submit_Next_Form_Button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xPath)))
+    submit_Next_Form_Button.click()
+
+
 def nextButton(path): # Next Button Function to move to another page
     xPath = path
     clickNextButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xPath)))
@@ -1672,6 +1565,159 @@ def generate_random_username(name):
     return name.replace(" ", "") + random_number + random.choice(email_Addres_List)
 
 
+def main():
+    global counter  # Use the global keyword to modify the global counter variable
+
+    try:
+        # Create the popup window before the while loop starts
+        if counter <= 1:
+            popCounter()
+
+        while counter < 3:
+            print("----------------------------PAGE 1 STARTED----------------------------------")
+
+            formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
+            print(formCleared)
+
+            email_check = emailChecked() # This function is used for check box
+            print(email_check)
+            time.sleep(3)
+
+            fiCodeAdded = addFiCode() # This function is used to fill the text field
+            print(fiCodeAdded)
+
+            locationAdded = addLocation() # This function is used to fill the text field
+            print(locationAdded)
+
+            companySelected = dropdownAction() # This function is used for drop down menu
+            print(companySelected)
+            time.sleep(1)
+
+            consentButtonClicked = consentButton() # This function is used for drop down menu
+            print(consentButtonClicked)
+            time.sleep(1)
+
+            nameAdded = nameField() # This function is used to fill the name text field
+            print(nameAdded)
+
+            ageAdded = ageField() # This function is used to fill the age text field
+            print(ageAdded)
+
+            '''Page 1 and Page 2 submission STARTS HERE'''
+            
+            page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
+            print(page_Two_Radio_Buttons_Clicked)
+
+            '''Page 1 and Page 2 submission ENDS HERE'''
+
+            time.sleep(1) # Wait for few seconds before clicking the NEXT button
+
+            # Next Button clicked to enter page - 3
+            xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
+            nextButton(xpath)
+
+            '''Page 3 submission STARTS HERE'''
+            print("----------------------------PAGE 3 STARTED----------------------------------")
+
+            page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
+            print(page_Three_Radio_Button_Clicked)
+            print("All Radio Buttons Clicked Successfully")
+
+            '''Page 3 submission ENDS HERE'''
+
+            print("----------------------------PAGE 4 STARTED----------------------------------")
+            
+            xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
+            nextButton(xpath) # Next Button clicked to enter page - 4
+
+            '''Page 4 submission STARTS HERE'''
+
+            page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
+            print("All Radion Button Clicked Successfully on Page - 4")
+            print(page_Four_Radio_Button_Clicked)
+
+            '''Page 4 submission ENDS HERE'''
+
+            xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 4 Next Button
+            nextButton(xPath) # Next Button clicked to enter page - 5
+
+            time.sleep(4) # Wait for the new page to load properly
+
+            '''Page 5 submission STARTS HERE'''
+
+            print("----------------------------PAGE 5 STARTED----------------------------------")
+
+            page_Five_Radio_Button_Clicked = radio_Buttons_Page_Five()
+            print(page_Five_Radio_Button_Clicked)
+
+            print("----------------------------PAGE 5 ENDS HERE-------------------------------")
+
+            '''Page 5 submission ENDS HERE'''
+
+            xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 5 Next Button
+            nextButton(xPath) # Next Button clicked to enter page - 6
+
+            '''Page 6 submission STARTS HERE'''
+            
+            print("----------------------------PAGE 6 STARTED----------------------------------")
+
+            page_Six_Radio_Button_Clicked = radio_Buttons_Page_Six()
+            print(page_Six_Radio_Button_Clicked)
+
+            print("----------------------------PAGE 6 ENDS HERE-------------------------------")
+
+            '''Page 6 submission ENDS HERE'''
+
+            xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
+            nextButton(xPath) # Next Button clicked to enter page - 7
+
+
+            '''Page 7 submission STARTS HERE'''
+            
+            print("----------------------------PAGE 7 STARTED----------------------------------")
+
+            page_Seven_Radio_Button_Clicked = radio_Buttons_Page_Seven()
+            print(page_Seven_Radio_Button_Clicked)
+
+            print("----------------------------PAGE 7 ENDS HERE-------------------------------")
+
+            '''Page 7 submission ENDS HERE'''
+
+            xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
+            nextButton(xPath) # Next Button clicked to enter page - 8
+
+
+            '''Page 8 submission STARTS HERE'''
+            
+            print("----------------------------PAGE 8 STARTED----------------------------------")
+
+            page_Eight_Radio_Button_Clicked = radio_Buttons_Page_Eight()
+            print(page_Eight_Radio_Button_Clicked)
+
+            print("----------------------------PAGE 8 ENDS HERE-------------------------------")
+
+            '''Page 8 submission ENDS HERE'''
+
+            xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[2]/div[1]/div[2]/span/span' # XPATH for Page - 8 Submit Button
+            nextButton(xPath) # Submit Button clicked to start new form Submission
+
+            time.sleep(5)
+
+            submitNextForm() # Click on 'Submit Next Form / Response'
+
+            counter += 1 # Counter increases after every successful form submission
+        
+        print("~~~~~~~~~~~~~~~~~~~~")
+        print("Counter:", counter)
+        print("~~~~~~~~~~~~~~~~~~~~")
+
+    except TimeoutException:
+        print("Timeout occurred: Element not found within the specified time")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+
 fullName, emailAddress = generate_random_female_data()
 
-main()
+if __name__ == "__main__":
+    main()
