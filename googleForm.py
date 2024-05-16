@@ -119,7 +119,6 @@ def main():
 
         print("----------------------------PAGE 5 STARTED----------------------------------")
 
-
         page_Five_Radio_Button_Clicked = radio_Buttons_Page_Five()
         print(page_Five_Radio_Button_Clicked)
 
@@ -134,7 +133,6 @@ def main():
         
         print("----------------------------PAGE 6 STARTED----------------------------------")
 
-
         page_Six_Radio_Button_Clicked = radio_Buttons_Page_Six()
         print("All Radion Button Clicked Successfully on Page - 6")
         print(page_Six_Radio_Button_Clicked)
@@ -145,6 +143,24 @@ def main():
 
         xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
         nextButton(xPath) # Next Button clicked to enter page - 7
+
+
+        '''Page 7 submission STARTS HERE'''
+        
+        print("----------------------------PAGE 7 STARTED----------------------------------")
+
+        page_Seven_Radio_Button_Clicked = radio_Buttons_Page_Seven()
+        print("All Radion Button Clicked Successfully on Page - 7")
+        print(page_Seven_Radio_Button_Clicked)
+
+        print("----------------------------PAGE 7 ENDS HERE-------------------------------")
+
+        '''Page 7 submission ENDS HERE'''
+
+        # xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
+        # nextButton(xPath) # Next Button clicked to enter page - 7
+
+
 
         counter += 1 # Counter increases after every successful form submission
         print("~~~~~~~~~~~~~~~~~~~~")
@@ -158,7 +174,12 @@ def main():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-def radio_Buttons_Page_Six():
+
+def radio_Buttons_Page_Seven(): # Page 7: Perception of Glass Ceiling
+    time.sleep(4)
+
+
+def radio_Buttons_Page_Six(): # Page 6: Perception of Differential treatment
 
     '''Page Scrolled'''
     pageScroll(10)
@@ -297,7 +318,7 @@ def radio_Buttons_Page_Six():
     
     return "All Radion Button Clicked Successfully on Page - 6"
 
-def radio_Buttons_Page_Five():
+def radio_Buttons_Page_Five(): # Page 5: Individual/ Personality Related Statements
 
     '''Page Scrolled'''
     pageScroll(10)
@@ -468,7 +489,7 @@ def radio_Buttons_Page_Five():
     return "All Radion Buttons Clicked Successfully on Page - 5"
 
 
-def radio_Buttons_Page_Four():
+def radio_Buttons_Page_Four(): # Page 4: Social and Cultural Related Statements
     
     '''Page Scrolled'''
     pageScroll(10)
@@ -589,7 +610,7 @@ def radio_Buttons_Page_Four():
     return "----------------------------PAGE 4 ENDS HERE--------------------------------"
 
 
-def radio_Buttons_Page_Three():
+def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
 
     time.sleep(5)
 
@@ -757,7 +778,7 @@ def radio_Buttons_Page_Three():
     return "Page 3 Completed"
 
 
-def radio_Buttons_Page_Two():
+def radio_Buttons_Page_Two(): # Page 2: Respondent Profile
 
     '''Page Scrolled'''
     pageScroll(13)
