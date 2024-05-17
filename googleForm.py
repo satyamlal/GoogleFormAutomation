@@ -1305,10 +1305,12 @@ def page_Two_Text_Fields():
         "TATA Elxsi",
         "Deloitte India",
         "Ernst & Young (EY)",
+        "MoEngage",
+        "GX Group",
     ]
 
     # Define the probabilities
-    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05]
+    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05, 0.03, 0.01]
 
     # Choose between the two sets of coordinates based on probabilities
     companyName = random.choices(organizationName, weights=probabilities)[0]
@@ -1339,7 +1341,9 @@ def page_Two_Text_Fields():
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
     
     designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer']
-    shortTextFields.send_keys(random.choice(designation)) # Team Designation selected randomly
+    probabilities = [0.7, 0.5, 0.45, 0.30, 0.21]
+    shortTextFields.send_keys(random.choices(designation, weights=probabilities)[0]) # Team Designation selected randomly
+
 
     return "All Text Fields completed for this Page-2"
 
@@ -1583,7 +1587,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter <= 1:
+        while counter < 1:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
