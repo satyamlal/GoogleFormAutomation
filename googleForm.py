@@ -42,7 +42,74 @@ screen_width, screen_height = pyautogui.size()
 middle_x = screen_width // 2
 middle_y = screen_height // 2
 
-counter = 1  # Initialize the counter globally
+counter = 0  # Initialize the counter globally
+
+
+
+# List of common First Names
+first_names = [
+    "Aaradhya", "Ananya", "Jiya", "Kavya", "Mahi", "Riya",
+    "Shreya", "Aadhya", "Aanya", "Aarohi", "Aashi", "Anika",
+    "Khushi", "Manvi", "Pari", "Roshni",  "Avni", "Gauri",
+    "Sanvi", "Sara", "Siya", "Suhani", "Tanisha", "Trisha",
+    "Amaira", "Arya", "Dhriti", "Isha", "Hansa",  "Aradhana",
+    "Kashvi", "Kiara", "Kriti", "Mahira", "Nehal", "Pihu",
+    "Ridhi", "Riva", "Ruchi", "Shruti", "Sneha", "Tanvi",
+    "Vaani", "Vanya", "Akshara", "Anvi", "Aria", "Lakshita",
+    "Ankita", "Bhavya", "Chahat", "Divya", "Devika", "Shivani",
+    "Naina", "Navya", "Mehek",  "Tanya",
+    "Nikita", "Poonam", "Palak", "Radhika", "Sonia",
+    "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Aarushi",
+    "Amaya", "Aparna", "Dia", "Ishaani", "Nupur", "Nandita",
+    "Jhanvi", "Kanak", "Mansi", "Neha", "Saniya",
+    "Priya", "Priti", "Ritika", "Saumya", "Nimisha",
+    "Shanaya", "Tara", "Urvashi", "Vidhi", "Yashvi",
+    "Anushree", "Bhavika", "Chitra", "Drishti", "Ishita",
+    "Ishika", "Lavanya", "Mehak", "Niharika", "Bhawna",
+    "Nisha", "Rachana", "Rashi", "Ruchika", "Sanya",
+    "Saanvi", "Shikha", "Vani", "Aditi", "Samaira", 
+    "Aadya", "Anisha", "Apoorva", "Anvita", "Aradhya",
+    "Charu", "Deeksha", "Ishani", "Juhi", "Komal", "Kritika",
+    "Mahika", "Nandini", "Navika", "Prerna", "Priyanka",
+    "Rishika", "Shivangi", "Sarika", "Tanushree", "Ria",
+    "Yamini", "Anushka", "Arunima", "Bhavna", "Devanshi",
+    "Ishwarya", "Jagrati", "Kanishka", "Mahima", "Mansi", 
+    "Nitya", "Radha", "Reema", "Rhea", "Saisha", "Sakshi",
+    "Aarohi", "Alisha", "Arushi", "Anshu",  "Minal", 
+    "Aashi", "Anupriya", "Bhoomi", "Chhaya", "Deepti",
+    "Jasmine", "Kashish", "Kashvi", "Kirti", "Lakshmi", 
+    "Pari", "Pragya", "Pooja", "Ritika", "Ritvi", "Sanya", 
+    "Sakshi", "Srishti", "Tanishka", "Vaishali", "Riddham",
+]
+
+# List of common North Indian surnames with corresponding probabilities
+last_names = [
+    ("Sharma", 25), 
+    ("Verma", 20), 
+    ("Jha", 20),
+    ("Singh", 15),
+    ("Yadav", 10),
+    ("Gupta", 15), 
+    ("Malhotra", 5),
+    ("Bhatia", 5),
+    ("Chopra", 5),
+    ("Mittal", 5),
+    ("Pandey", 7),
+    ("Tiwari", 6),
+    ("Shukla", 6),
+    ("Garg", 4),
+    ("Agarwal", 10),
+    ("Chauhan", 10),
+    ("Sinha", 10),
+    ("Joshi", 3),
+    ("Shah", 4),
+    ("Goyal", 4),
+    ("Choudhary", 6),
+    ("Kapoor", 2),
+    ("Khanna", 2),
+    ("Arora", 2),
+]
+
 
 def radio_Buttons_Page_Eight(): # Page 8: Impact on the performance due to the perception of glass ceiling
     time.sleep(3)
@@ -622,10 +689,14 @@ def radio_Buttons_Page_Five(): # Page 5: Individual/ Personality Related Stateme
     pyautogui.moveTo(x=x, y=y, duration=0.3)
     pyautogui.click()
 
+    time.sleep(3)
+
     return "All Radion Buttons Clicked Successfully on Page - 5"
 
 
 def radio_Buttons_Page_Four(): # Page 4: Social and Cultural Related Statements
+
+    time.sleep(3)
     
     '''Page Scrolled'''
     pageScroll(10)
@@ -666,6 +737,7 @@ def radio_Buttons_Page_Four(): # Page 4: Social and Cultural Related Statements
     # Move the cursor to "related to flexible timings" section 
     pyautogui.moveTo(x=x, y=y, duration=0.3)
     pyautogui.click()
+
 
     '''Page Scrolled'''
     pageScroll(17)
@@ -1412,75 +1484,10 @@ def dropdownAction():
     return "Private Company selected and Moved to the Page - 2"
 
 def pageScroll(n):
-    pyautogui.moveTo(x=1910, y=1005, duration=0.5)
+    pyautogui.moveTo(x=1910, y=1007, duration=0.5)
     # n clicks
     for _ in range(n):
         pyautogui.click()
-
-
-# List of common First Names
-first_names = [
-    "Aaradhya", "Ananya", "Jiya", "Kavya", "Mahi", "Riya",
-    "Shreya", "Aadhya", "Aanya", "Aarohi", "Aashi", "Anika",
-    "Khushi", "Manvi", "Pari", "Roshni",  "Avni", "Gauri",
-    "Sanvi", "Sara", "Siya", "Suhani", "Tanisha", "Trisha",
-    "Amaira", "Arya", "Dhriti", "Isha", "Hansa",  "Aradhana",
-    "Kashvi", "Kiara", "Kriti", "Mahira", "Nehal", "Pihu",
-    "Ridhi", "Riva", "Ruchi", "Shruti", "Sneha", "Tanvi",
-    "Vaani", "Vanya", "Akshara", "Anvi", "Aria", "Lakshita",
-    "Ankita", "Bhavya", "Chahat", "Divya", "Devika", "Shivani",
-    "Naina", "Navya", "Mehek",  "Tanya",
-    "Nikita", "Poonam", "Palak", "Radhika", "Sonia",
-    "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Aarushi",
-    "Amaya", "Aparna", "Dia", "Ishaani", "Nupur", "Nandita",
-    "Jhanvi", "Kanak", "Mansi", "Neha", "Saniya",
-    "Priya", "Priti", "Ritika", "Saumya", "Nimisha",
-    "Shanaya", "Tara", "Urvashi", "Vidhi", "Yashvi",
-    "Anushree", "Bhavika", "Chitra", "Drishti", "Ishita",
-    "Ishika", "Lavanya", "Mehak", "Niharika", "Bhawna",
-    "Nisha", "Rachana", "Rashi", "Ruchika", "Sanya",
-    "Saanvi", "Shikha", "Vani", "Aditi", "Samaira", 
-    "Aadya", "Anisha", "Apoorva", "Anvita", "Aradhya",
-    "Charu", "Deeksha", "Ishani", "Juhi", "Komal", "Kritika",
-    "Mahika", "Nandini", "Navika", "Prerna", "Priyanka",
-    "Rishika", "Shivangi", "Sarika", "Tanushree", "Ria",
-    "Yamini", "Anushka", "Arunima", "Bhavna", "Devanshi",
-    "Ishwarya", "Jagrati", "Kanishka", "Mahima", "Mansi", 
-    "Nitya", "Radha", "Reema", "Rhea", "Saisha", "Sakshi",
-    "Aarohi", "Alisha", "Arushi", "Anshu",  "Minal", 
-    "Aashi", "Anupriya", "Bhoomi", "Chhaya", "Deepti",
-    "Jasmine", "Kashish", "Kashvi", "Kirti", "Lakshmi", 
-    "Pari", "Pragya", "Pooja", "Ritika", "Ritvi", "Sanya", 
-    "Sakshi", "Srishti", "Tanishka", "Vaishali", "Riddham",
-]
-
-# List of common North Indian surnames with corresponding probabilities
-last_names = [
-    ("Sharma", 25), 
-    ("Verma", 20), 
-    ("Jha", 20),
-    ("Singh", 15),
-    ("Yadav", 10),
-    ("Gupta", 15), 
-    ("Malhotra", 5),
-    ("Bhatia", 5),
-    ("Chopra", 5),
-    ("Mittal", 5),
-    ("Pandey", 7),
-    ("Tiwari", 6),
-    ("Shukla", 6),
-    ("Garg", 4),
-    ("Agarwal", 10),
-    ("Chauhan", 10),
-    ("Sinha", 10),
-    ("Joshi", 3),
-    ("Shah", 4),
-    ("Goyal", 4),
-    ("Choudhary", 6),
-    ("Kapoor", 2),
-    ("Khanna", 2),
-    ("Arora", 2),
-]
 
 
 '''This function generates random numbers each time it is called and cross checks if the number already exists before return the number'''
@@ -1581,7 +1588,7 @@ def main():
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
 
-            print("----------------------------PAGE 1 STARTED----------------------------------")
+            print("------------------------PAGE 1 & 2 SUBMISSION STARTED-----------------------")
 
             formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
             print(formCleared)
@@ -1617,13 +1624,15 @@ def main():
 
             '''Page 1 and Page 2 submission ENDS HERE'''
 
-            time.sleep(1) # Wait for few seconds before clicking the NEXT button
+            time.sleep(2) # Wait for few seconds before clicking the NEXT button
 
             # Next Button clicked to enter page - 3
             xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
             nextButton(xpath)
 
+
             '''Page 3 submission STARTS HERE'''
+
             print("----------------------------PAGE 3 STARTED----------------------------------")
 
             page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
@@ -1632,12 +1641,17 @@ def main():
 
             '''Page 3 submission ENDS HERE'''
 
-            print("----------------------------PAGE 4 STARTED----------------------------------")
-            
+
+            time.sleep(2)
+
+
             xpath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span'
             nextButton(xpath) # Next Button clicked to enter page - 4
 
+
             '''Page 4 submission STARTS HERE'''
+
+            print("----------------------------PAGE 4 STARTED----------------------------------")
 
             page_Four_Radio_Button_Clicked = radio_Buttons_Page_Four()
             print("All Radion Button Clicked Successfully on Page - 4")
@@ -1661,6 +1675,8 @@ def main():
 
             '''Page 5 submission ENDS HERE'''
 
+            time.sleep(2)
+
             xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 5 Next Button
             nextButton(xPath) # Next Button clicked to enter page - 6
 
@@ -1674,6 +1690,10 @@ def main():
             print("----------------------------PAGE 6 ENDS HERE-------------------------------")
 
             '''Page 6 submission ENDS HERE'''
+
+
+            time.sleep(2)
+
 
             xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 6 Next Button
             nextButton(xPath) # Next Button clicked to enter page - 7
@@ -1689,6 +1709,8 @@ def main():
             print("----------------------------PAGE 7 ENDS HERE-------------------------------")
 
             '''Page 7 submission ENDS HERE'''
+            
+            time.sleep(2)
 
             xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div[2]/span/span' # XPATH for Page - 7 Next Button
             nextButton(xPath) # Next Button clicked to enter page - 8
