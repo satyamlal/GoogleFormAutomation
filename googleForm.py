@@ -42,8 +42,8 @@ screen_width, screen_height = pyautogui.size()
 middle_x = screen_width // 2
 middle_y = screen_height // 2
 
-counter = 0  # Initialize the counter globally
 
+counter = 0  # counter variable initialized globally
 
 
 # List of common First Names
@@ -1272,10 +1272,10 @@ def page_Two_Text_Fields():
     
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     
-    highest_Qualification = ['B.Tech', 'M.Tech']
+    highest_Qualification = ['B.Tech', 'M.Tech', 'BCA', 'Masters']
 
     # Define the probabilities
-    probabilities = [0.70, 0.30]
+    probabilities = [0.61, 0.23, 0.1, 0.05]
 
     # Random choice of highest Qualification based on the probability
     qualification = random.choices(highest_Qualification, weights=probabilities)[0]
@@ -1307,10 +1307,11 @@ def page_Two_Text_Fields():
         "Ernst & Young (EY)",
         "MoEngage",
         "GX Group",
+        "Amazon,",
     ]
 
     # Define the probabilities
-    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05, 0.03, 0.01]
+    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05, 0.03, 0.01, 0.01,]
 
     # Choose between the two sets of coordinates based on probabilities
     companyName = random.choices(organizationName, weights=probabilities)[0]
@@ -1340,8 +1341,8 @@ def page_Two_Text_Fields():
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
     
-    designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer']
-    probabilities = [0.7, 0.5, 0.45, 0.30, 0.21]
+    designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer', 'Team Leader', ]
+    probabilities = [0.7, 0.3, 0.22, 0.30, 0.12, 0.02]
     shortTextFields.send_keys(random.choices(designation, weights=probabilities)[0]) # Team Designation selected randomly
 
 
@@ -1466,8 +1467,8 @@ def addLocation():
     
     locationElement.clear()
 
-    locations = ['Gurgaon', 'Delhi']
-    probabilities = [0.7, 0.3]
+    locations = ['Gurgaon', 'Delhi', 'Gurugram']
+    probabilities = [0.7, 0.3, 0.6]
     
     locationElement.send_keys(random.choices(locations, weights=probabilities)[0])
     
