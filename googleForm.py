@@ -1311,7 +1311,7 @@ def page_Two_Text_Fields():
     ]
 
     # Define the probabilities
-    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05, 0.03, 0.01, 0.01,]
+    probabilities = [0.60, 0.25, 0.25, 0.30, 0.15, 0.10, 0.10, 0.10, 0.05, 0.05, 0.35, 0.05, 0.05, 0.03, 0.01, 0.01]
 
     # Choose between the two sets of coordinates based on probabilities
     companyName = random.choices(organizationName, weights=probabilities)[0]
@@ -1524,36 +1524,40 @@ def generate_random_mobile_number():
 
 # Generate random Indian names and corresponding email addresses
 def generate_random_female_data():
+    
+    # Select a first name randomly
     first_name = random.choice(first_names)
+
     # Select a single surname based on the probabilities
     surname = random.choices(*zip(*last_names))[0]
+    
+    # Generate a full name by concatenating first_name and surname
     full_name = first_name + " " + surname
+    
+    # New email will be generate by passing the full_name as parameter to the generate_random_username function
     email = generate_random_username(full_name)
+    
     return full_name, email.lower()  # Convert email address to lowercase
 
-def generate_random_username(name):
+def generate_random_username(first_name, surname):
     random_digit = random.choice([3, 4, 5])  # Randomly select digit to generate 3, 4, or 5 numbers
     random_number = ''.join(random.choices(string.digits, k=random_digit))  # Generate random numbers of digits
     
-    # Probabilities for choosing whether to concatenate surname before first name or first name before surname
-    probabilities = [0.65, 0.45]
+    # Choose whether to use an underscore or a period between the names
+    separator = random.choice(['_', '.', ''])
     
-    # Choose whether to concatenate surname before first name or first name before surname
-    email_format = random.choices(['surname_first', 'first_surname'], weights=probabilities)[0]
-
-    if email_format == 'surname_first':
-        # Concatenate the surname before the first name
-        email_name = name.split()[1] + name.split()[0]
-    else:
-        # Concatenate the first name before the surname
-        email_name = name.split()[0] + name.split()[1]
-
-    email_address_list = ['@gmail.com', '@outlook.com', '@yahoo.com']
-    probabilities = [0.91, 0.05, 0.04]  # Probabilities for choosing email domains
-
+    # Concatenate the first name and surname with the separator
+    email_name = f"{first_name}{separator}{surname}"
+    
+    # Randomly decide whether to add an additional period after the names
+    if random.choice([True, False]):
+        email_name += '.'
+    
     # Choose email domain based on probabilities
+    email_address_list = ['@gmail.com', '@outlook.com', '@yahoo.com']
+    probabilities = [0.91, 0.05, 0.04]
     email_domain = random.choices(email_address_list, weights=probabilities)[0]
-
+    
     # Concatenate the email name with the random number and append the selected email domain
     return email_name + random_number + email_domain
 
@@ -1588,12 +1592,14 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter < 1:
+        while counter < 15:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
 
-            print("------------------------PAGE 1 & 2 SUBMISSION STARTED-----------------------")
+            '''Page 1 submission STARTS HERE'''
+
+            print("----------------------------PAGE 1 STARTED----------------------------------")
 
             formCleared = clearForm() # This function is used to clear the form using the 'Clear form' button
             print(formCleared)
@@ -1612,6 +1618,18 @@ def main():
             print(companySelected)
             time.sleep(1)
 
+            '''Page 1 submission ENDS HERE'''
+
+            print("----------------------------PAGE 1 ENDS HERE-------------------------------")
+
+            time.sleep(2)
+
+            
+            '''Page 2 submission STARTS HERE'''
+
+            print("----------------------------PAGE 2 STARTED----------------------------------")
+
+
             consentButtonClicked = consentButton() # This function is used for drop down menu
             print(consentButtonClicked)
             time.sleep(1)
@@ -1621,13 +1639,15 @@ def main():
 
             ageAdded = ageField() # This function is used to fill the age text field
             print(ageAdded)
-
-            '''Page 1 and Page 2 submission STARTS HERE'''
             
             page_Two_Radio_Buttons_Clicked = radio_Buttons_Page_Two()
             print(page_Two_Radio_Buttons_Clicked)
 
-            '''Page 1 and Page 2 submission ENDS HERE'''
+            
+            '''Page 2 submission ENDS HERE'''
+
+            print("----------------------------PAGE 2 ENDS HERE-------------------------------")
+
 
             time.sleep(2) # Wait for few seconds before clicking the NEXT button
 
@@ -1643,6 +1663,8 @@ def main():
             page_Three_Radio_Button_Clicked = radio_Buttons_Page_Three()
             print(page_Three_Radio_Button_Clicked)
             print("All Radio Buttons Clicked Successfully")
+
+            print("----------------------------PAGE 3 ENDS HERE-------------------------------")
 
             '''Page 3 submission ENDS HERE'''
 
