@@ -36,7 +36,7 @@ This program is designed to automatically open the Google Chrome browser using P
 
 - **Unlimited Submissions:** The program can submit an unlimited number of forms non-stop once executed. This is controlled by a while loop that manages the number of submissions.
 
-- **CSV File Generated:** After every submission all the randomly generated data is stored in a '.csv' with data and time stamp, which can be used later to verify/cross check the data with the submissions. 
+- **CSV File Generated:** After every submission all the randomly generated data is stored in a '.csv' file with date and time stamp, which can be used later to verify/cross check the data with the submissions. 
 
 
 ## Disclaimer
