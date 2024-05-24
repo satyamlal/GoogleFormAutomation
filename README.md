@@ -17,7 +17,7 @@ Harvard CS50P Final Project YouTube Video [Link]()
 
 - Selenium Chrome Driver
 
-- pyautogui
+- PyAutoGUI
 
 
 ## Project Description
