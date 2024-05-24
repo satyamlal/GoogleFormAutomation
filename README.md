@@ -39,4 +39,4 @@ This program is designed to automatically open the Google Chrome browser using P
 
 ## Disclaimer
 
-Disclaimer: This project is made solely for educational purpose and should be treated as proof of concept. This should not be used to for any ill purpose.
+Disclaimer: This project is made solely for educational purpose and should be treated as proof of concept. This should not be used for any ill purpose.
