@@ -1173,7 +1173,7 @@ def radio_Buttons_Page_Two(): # Page 2: Respondent Profile
     pageScroll(15)
 
 
-    '''select random option for Promotion Criteria'''
+    '''select random option based on probability for Promotion Criteria'''
     # Define the coordinates
     x1, y1 = 714, 326
     x2, y2 = 648, 378
