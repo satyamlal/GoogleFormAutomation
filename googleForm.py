@@ -1407,6 +1407,9 @@ def consentButton():
 
 
 def submitNextForm(): # Click on 'Submit Another Response'
+
+    time.sleep(120)
+
     xPath = '/html/body/div[1]/div[2]/div[1]/div/div[4]/a'
     submit_Next_Form_Button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xPath)))
     submit_Next_Form_Button.click()
@@ -1522,23 +1525,6 @@ def generate_random_mobile_number():
             return number
 
 
-# Generate random Indian names and corresponding email addresses
-def generate_random_female_data():
-    
-    # Select a first name randomly
-    first_name = random.choice(first_names)
-
-    # Select a single surname based on the probabilities
-    surname = random.choices(*zip(*last_names))[0]
-    
-    # Generate a full name by concatenating first_name and surname
-    full_name = first_name + " " + surname
-    
-    # New email will be generate by passing the full_name as parameter to the generate_random_username function
-    email = generate_random_username(full_name)
-    
-    return full_name, email.lower()  # Convert email address to lowercase
-
 def generate_random_username(first_name, surname):
     random_digit = random.choice([3, 4, 5])  # Randomly select digit to generate 3, 4, or 5 numbers
     random_number = ''.join(random.choices(string.digits, k=random_digit))  # Generate random numbers of digits
@@ -1560,6 +1546,24 @@ def generate_random_username(first_name, surname):
     
     # Concatenate the email name with the random number and append the selected email domain
     return email_name + random_number + email_domain
+
+
+# Generate random Indian names and corresponding email addresses
+def generate_random_female_data():
+    
+    # Select a first name randomly
+    first_name = random.choice(first_names)
+
+    # Select a single surname based on the probabilities
+    surname = random.choices(*zip(*last_names))[0]
+    
+    # Generate a full name by concatenating first_name and surname
+    full_name = first_name + " " + surname
+    
+    # New email will be generate by passing the full_name as parameter to the generate_random_username function
+    email = generate_random_username(first_name, surname)
+    
+    return full_name, email.lower()  # Convert email address to lowercase
 
 
 # Function to write data to CSV file
@@ -1592,7 +1596,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter < 15:
+        while counter < 2:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
