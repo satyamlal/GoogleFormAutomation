@@ -1,11 +1,8 @@
 from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
 from chromedriver_py import binary_path
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 import pyautogui
 from datetime import datetime
@@ -48,38 +45,21 @@ counter = 0  # counter variable initialized globally
 
 # List of common First Names
 first_names = [
-    "Aaradhya", "Ananya", "Jiya", "Kavya", "Mahi", "Riya",
-    "Shreya", "Aadhya", "Aanya", "Aarohi", "Aashi", "Anika",
-    "Khushi", "Manvi", "Pari", "Roshni",  "Avni", "Gauri",
-    "Sanvi", "Sara", "Siya", "Suhani", "Tanisha", "Trisha",
-    "Amaira", "Arya", "Dhriti", "Isha", "Hansa",  "Aradhana",
-    "Kashvi", "Kiara", "Kriti", "Mahira", "Nehal", "Pihu",
-    "Ridhi", "Riva", "Ruchi", "Shruti", "Sneha", "Tanvi",
-    "Vaani", "Vanya", "Akshara", "Anvi", "Aria", "Lakshita",
-    "Ankita", "Bhavya", "Chahat", "Divya", "Devika", "Shivani",
-    "Naina", "Navya", "Mehek",  "Tanya",
-    "Nikita", "Poonam", "Palak", "Radhika", "Sonia",
-    "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Aarushi",
-    "Amaya", "Aparna", "Dia", "Ishaani", "Nupur", "Nandita",
-    "Jhanvi", "Kanak", "Mansi", "Neha", "Saniya",
-    "Priya", "Priti", "Ritika", "Saumya", "Nimisha",
-    "Shanaya", "Tara", "Urvashi", "Vidhi", "Yashvi",
-    "Anushree", "Bhavika", "Chitra", "Drishti", "Ishita",
-    "Ishika", "Lavanya", "Mehak", "Niharika", "Bhawna",
-    "Nisha", "Rachana", "Rashi", "Ruchika", "Sanya",
-    "Saanvi", "Shikha", "Vani", "Aditi", "Samaira", 
-    "Aadya", "Anisha", "Apoorva", "Anvita", "Aradhya",
-    "Charu", "Deeksha", "Ishani", "Juhi", "Komal", "Kritika",
-    "Mahika", "Nandini", "Navika", "Prerna", "Priyanka",
-    "Rishika", "Shivangi", "Sarika", "Tanushree", "Ria",
-    "Yamini", "Anushka", "Arunima", "Bhavna", "Devanshi",
-    "Ishwarya", "Jagrati", "Kanishka", "Mahima", "Mansi", 
-    "Nitya", "Radha", "Reema", "Rhea", "Saisha", "Sakshi",
-    "Aarohi", "Alisha", "Arushi", "Anshu",  "Minal", 
-    "Aashi", "Anupriya", "Bhoomi", "Chhaya", "Deepti",
-    "Jasmine", "Kashish", "Kashvi", "Kirti", "Lakshmi", 
-    "Pari", "Pragya", "Pooja", "Ritika", "Ritvi", "Sanya", 
-    "Sakshi", "Srishti", "Tanishka", "Vaishali", "Riddham",
+    "Aaradhya", "Ananya", "Jiya", "Kavya", "Mahi", "Riya", "Shreya", "Aadhya", "Aanya", "Aarohi", "Aashi", "Anika",
+    "Khushi", "Manvi", "Pari", "Roshni",  "Avni", "Gauri", "Sanvi", "Sara", "Siya", "Suhani", "Tanisha", "Trisha",
+    "Amaira", "Arya", "Dhriti", "Isha", "Hansa",  "Aradhana", "Kashvi", "Kiara", "Kriti", "Mahira", "Nehal", "Pihu",
+    "Ridhi", "Riva", "Ruchi", "Shruti", "Sneha", "Tanvi", "Vaani", "Vanya", "Akshara", "Anvi", "Aria", "Lakshita",
+    "Ankita", "Bhavya", "Chahat", "Divya", "Devika", "Shivani", "Naina", "Navya", "Mehek",  "Tanya", "Nikita",
+    "Poonam", "Palak", "Radhika", "Sonia", "Urvi", "Vaishnavi", "Vanshika", "Yashika", "Aarushi", "Amaya", "Aparna",
+    "Dia", "Ishaani", "Nupur", "Nandita", "Jhanvi", "Kanak", "Mansi", "Neha", "Saniya", "Priya", "Priti", "Ritika",
+    "Saumya", "Nimisha", "Shanaya", "Tara", "Urvashi", "Vidhi", "Yashvi", "Anushree", "Bhavika", "Chitra", "Drishti",
+    "Ishita", "Ishika", "Lavanya", "Mehak", "Niharika", "Bhawna", "Nisha", "Rachana", "Rashi", "Ruchika", "Sanya",
+    "Saanvi", "Shikha", "Vani", "Aditi", "Samaira", "Aadya", "Anisha", "Apoorva", "Anvita", "Aradhya", "Charu",
+    "Deeksha", "Ishani", "Juhi", "Komal", "Kritika", "Mahika", "Nandini", "Navika", "Prerna", "Priyanka", "Rishika",
+    "Shivangi", "Sarika", "Tanushree", "Ria", "Yamini", "Anushka", "Arunima", "Bhavna", "Devanshi", "Ishwarya", "Jagrati",
+    "Kanishka", "Mahima", "Mansi", "Nitya", "Radha", "Reema", "Rhea", "Saisha", "Sakshi", "Aarohi", "Alisha", "Arushi",
+    "Anshu",  "Minal", "Aashi", "Anupriya", "Bhoomi", "Chhaya", "Deepti", "Jasmine", "Kashish", "Kashvi", "Kirti", "Lakshmi", 
+    "Pari", "Pragya", "Pooja", "Ritika", "Ritvi", "Sanya", "Sakshi", "Srishti", "Tanishka", "Vaishali", "Riddham",
 ]
 
 # List of common North Indian surnames with corresponding probabilities
@@ -1251,15 +1231,19 @@ def page_Two_Text_Fields():
     pyautogui.click()
     print("----------------------------------------------------------------------------")
     print("Marital Status Clicked")
-    
+
+    time.sleep(5)    
 
     '''Random Contact Number Generated STARTS HERE'''
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[7]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(generate_random_mobile_number()) # Contact number added
+
     '''Random Contact Number Generated ENDS HERE'''
 
 
     '''Random Email Generated STARTS HERE'''
+    
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     print("Email Address added in the text field:", emailAddress)
 
@@ -1285,7 +1269,6 @@ def page_Two_Text_Fields():
     print("Highest Qualification Added Successfully")
     
     '''Highest Qualification selection END HERE'''
-    
     
     '''Oraganization Name and Type'''
     
@@ -1325,17 +1308,27 @@ def page_Two_Text_Fields():
 
     randomNumber = [1,2,3] # List of three numbers
 
+    time.sleep(5)
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[11]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Professional Experience Added
+
+    time.sleep(5)
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[12]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Tenure in Present Organization Added
 
+    time.sleep(5)
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[13]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Tenure in Current Position Added
 
+    time.sleep(5)
+    
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("IT") # Functional Department Added
+
+    time.sleep(5)
 
     # Scroll the screen to the 'Designation' Section
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
@@ -1364,6 +1357,8 @@ def ageField():
     page_Two_Text_Fields()
     print("----------------------------------------------------------------------------")
 
+    time.sleep(5)
+
     return "All Text Fields and Radio button clicked"
 
 
@@ -1382,8 +1377,11 @@ def nameField():
     print("----------------------------------------------------------------------------")
     print("Full Name Printed in the Name Field:", fullName)
     print("Email Address:", emailAddress)
-    print("----------------------------------------------------------------------------")
+    print
+    ("----------------------------------------------------------------------------")
     
+    time.sleep(5)
+
     return "Name Added"
 
 
@@ -1401,6 +1399,9 @@ def consentButton():
     # Mouse moved to the 'Clear form' button of the pop up menu
     pyautogui.moveTo(x=650, y=300, duration=0.5)  
     pyautogui.click()
+
+    time.sleep(5)
+
     print("----------------------------PAGE 2 STARTED----------------------------------")
 
     return "Consent set to YES"
@@ -1408,7 +1409,7 @@ def consentButton():
 
 def submitNextForm(): # Click on 'Submit Another Response'
 
-    time.sleep(120)
+    time.sleep(300)
 
     xPath = '/html/body/div[1]/div[2]/div[1]/div/div[4]/a'
     submit_Next_Form_Button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xPath)))
