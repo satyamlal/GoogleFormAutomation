@@ -1587,7 +1587,7 @@ def record_timestamp():
 
 
 def main():
-    global counter  # Use the global keyword to modify the global counter variable
+    global counter  # global counter variable
 
     try:
 
@@ -1597,7 +1597,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter < 2:
+        while counter < 3:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
