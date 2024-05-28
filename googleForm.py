@@ -28,7 +28,8 @@ driver.maximize_window()
 driver.implicitly_wait(5)  # Implicit wait to wait for elements to be available
 
 # Open the Google Form URL
-driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
+# driver.get('https://docs.google.com/forms/d/e/1FAIpQLSdmONEy9LcFGnlKWF7IEVlvvEm08-wvP2li7w_MDBicsdRZLw/viewform?vc=0&c=0&w=1&flr=0')
+driver.get('https://forms.gle/mkoRtj5CaYdaVANt8')
 print("Link Opened")
 time.sleep(5)
 
@@ -1232,7 +1233,7 @@ def page_Two_Text_Fields():
     print("----------------------------------------------------------------------------")
     print("Marital Status Clicked")
 
-    time.sleep(5)    
+    time.sleep(1)
 
     '''Random Contact Number Generated STARTS HERE'''
 
@@ -1350,14 +1351,12 @@ def ageField():
     age = [21,22,23,24,25]
     ageTextField.send_keys(random.choice(age))
     print("----------------------------------------------------------------------------")
-    print("New Age Filled")
+    print("Age Filled")
 
     # Scroll the element into view
     driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
     page_Two_Text_Fields()
     print("----------------------------------------------------------------------------")
-
-    time.sleep(5)
 
     return "All Text Fields and Radio button clicked"
 
@@ -1376,16 +1375,16 @@ def nameField():
 
     print("----------------------------------------------------------------------------")
     print("Full Name Printed in the Name Field:", fullName)
-    print("Email Address:", emailAddress)
     print
     ("----------------------------------------------------------------------------")
-    
-    time.sleep(5)
 
     return "Name Added"
 
 
 def consentButton():
+
+    pageScroll(13)
+
     # Wait for the "Clear" button to be clickable
     consentButtonFound = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')))
     
@@ -1397,12 +1396,11 @@ def consentButton():
     dropdownMenu.click()
 
     # Mouse moved to the 'Clear form' button of the pop up menu
-    pyautogui.moveTo(x=650, y=300, duration=0.5)  
+    pyautogui.moveTo(x=706, y=294, duration=0.5)  
     pyautogui.click()
 
-    time.sleep(5)
-
     print("----------------------------PAGE 2 STARTED----------------------------------")
+
 
     return "Consent set to YES"
 
@@ -1452,39 +1450,48 @@ def emailChecked():
     
     return "Email checked"
 
-
-def addFiCode():
-    # Wait for fiCodeElement input field to be visible and clickable
-    fiCodeElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
-    # Scroll the element into view
-    driver.execute_script("arguments[0].scrollIntoView(true);", fiCodeElement) # Wait for a short time to ensure the scroll operation is completed
-    fiCodeElement.clear()
-    
-    fiCodeElement.send_keys("12")
-    
-    return "FI Code: Text Field Cleared and Added 12 in it"
-
 def addLocation():
     # Wait for location input field to be visible and clickable
-    locationElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')))
+    locationElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     
     locationElement.clear()
 
-    locations = ['Gurgaon', 'Delhi', 'Gurugram']
-    probabilities = [0.7, 0.3, 0.6]
+    locations = [
+        'Gurgaon', 'Delhi', 'Gurugram', 'Bangalore', 'London',
+        'New York', 'Tokyo', 'Paris', 'Dubai', 'Singapore', 
+        'Los Angeles', 'Chicago', 'Hong Kong', 'Sydney', 'San Francisco',
+        'Toronto', 'Shanghai', 'Moscow', 'Mumbai', 'Mexico City',
+        'Seoul', 'São Paulo', 'Istanbul', 'Jakarta', 'Buenos Aires',
+        'Kuala Lumpur', 'Beijing', 'Bangkok', 'Rio de Janeiro', 'Melbourne',
+        'Cairo', 'Berlin', 'Madrid', 'Rome', 'Vienna',
+        'Zurich', 'Amsterdam', 'Brussels', 'Lima', 'Lisbon',
+        'Johannesburg', 'Stockholm', 'Santiago', 'Warsaw', 'Munich',
+        'Barcelona', 'Athens', 'Prague', 'Budapest', 'Milan'
+    ]
+
+    probabilities = [
+        0.7, 0.3, 0.6, 0.65, 0.8, 0.9, 0.85, 0.8, 0.75, 0.85, 
+        0.8, 0.75, 0.8, 0.7, 0.8, 0.75, 0.8, 0.65, 0.7, 0.65,
+        0.8, 0.75, 0.7, 0.65, 0.7, 0.7, 0.8, 0.75, 0.7, 0.75,
+        0.65, 0.7, 0.75, 0.75, 0.75, 0.8, 0.75, 0.75, 0.7, 0.75,
+        0.7, 0.75, 0.7, 0.7, 0.75, 0.8, 0.7, 0.75, 0.7, 0.75
+    ]
+
     
     locationElement.send_keys(random.choices(locations, weights=probabilities)[0])
     
     return "Location Added"
 
-def dropdownAction():
+def natureOfCompany():
+
+    pageScroll(8)
+
     dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
     dropdownMenu.click()
-    time.sleep(0.5)
+    time.sleep(1)
 
     # Mouse moved to the 'Clear form' button of the pop up menu
-    pyautogui.moveTo(x=850, y=850, duration=0.5)
+    pyautogui.moveTo(x=792, y=945, duration=0.5)
     pyautogui.click()
 
     xPath = '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span' # XPATH for Page - 1 Next Button
@@ -1597,7 +1604,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter < 3:
+        while counter < 2:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
@@ -1611,15 +1618,12 @@ def main():
 
             email_check = emailChecked() # This function is used for check box
             print(email_check)
-            time.sleep(3)
+            time.sleep(1)
 
-            fiCodeAdded = addFiCode() # This function is used to fill the text field
-            print(fiCodeAdded)
+            currentlyLiving = addLocation() # Currently Living In Text Field
+            print(currentlyLiving)
 
-            locationAdded = addLocation() # This function is used to fill the text field
-            print(locationAdded)
-
-            companySelected = dropdownAction() # This function is used for drop down menu
+            companySelected = natureOfCompany() # This function is used for drop down menu
             print(companySelected)
             time.sleep(1)
 
@@ -1629,7 +1633,6 @@ def main():
 
             time.sleep(2)
 
-            
             '''Page 2 submission STARTS HERE'''
 
             print("----------------------------PAGE 2 STARTED----------------------------------")
