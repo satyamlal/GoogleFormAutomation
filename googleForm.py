@@ -799,20 +799,20 @@ def radio_Buttons_Page_Four(): # Page 4: Social and Cultural Related Statements
     return "----------------------------PAGE 4 ENDS HERE--------------------------------"
 
 
-def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
+def radio_Buttons_Page_Three(): # Page 3: Climate Change and Daily Life
 
     time.sleep(5)
 
     '''Page Scrolled'''
-    pageScroll(11)
+    pageScroll(18)
 
-    '''select random option for organization is considerate of the requests'''
+    '''select random option for climate change has significantly affected agricultural productivity'''
     # Define the coordinates
-    x1, y1 = 593, 310
-    x2, y2 = 590, 354
-    x3, y3 = 592, 405
-    x4, y4 = 593, 457
-    x5, y5 = 592, 506
+    x1, y1 = 558, 300
+    x2, y2 = 557, 358
+    x3, y3 = 556, 410
+    x4, y4 = 557, 462
+    x5, y5 = 556, 518
 
     # Define the probabilities
     probabilities = [0.01, 0.05, 0.40, 0.30, 0.01]
@@ -825,13 +825,13 @@ def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
     pyautogui.click()
 
 
-    '''select random option for Company doesn't provide support facilities'''
+    '''select random option for climate change has led to a decrease in water availability'''
     # Define the coordinates
-    x1, y1 = 594, 680
-    x2, y2 = 594, 733
-    x3, y3 = 594, 783
-    x4, y4 = 594, 831
-    x5, y5 = 594, 883
+    x1, y1 = 557, 746
+    x2, y2 = 557, 803
+    x3, y3 = 557, 857
+    x4, y4 = 557, 911
+    x5, y5 = 557, 968
 
     # Define the probabilities
     probabilities = [0.01, 0.25, 0.35, 0.10, 0.01]
@@ -844,15 +844,15 @@ def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
     pyautogui.click()
 
     '''Page Scrolled'''
-    pageScroll(15)
+    pageScroll(18)
 
     '''select random option for policies related to reentry of employees after sabbaticals'''
     # Define the coordinates
-    x1, y1 = 590, 308
-    x2, y2 = 592, 358
-    x3, y3 = 592, 400
-    x4, y4 = 590, 460
-    x5, y5 = 592, 510
+    x1, y1 = 554, 296
+    x2, y2 = 560, 350
+    x3, y3 = 557, 406
+    x4, y4 = 556, 461
+    x5, y5 = 557, 517
 
     # Define the probabilities
     probabilities = [0.01, 0.03, 0.40, 0.15, 0.01]
@@ -865,13 +865,13 @@ def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
     pyautogui.click()
 
 
-    '''select random option for paid menstrual leaves'''
+    '''select random option for women in your village now spend more time collecting water'''
     # Define the coordinates
-    x1, y1 = 592, 684
-    x2, y2 = 594, 736
-    x3, y3 = 593, 785
-    x4, y4 = 593, 834
-    x5, y5 = 593, 886
+    x1, y1 = 555, 742
+    x2, y2 = 555, 799
+    x3, y3 = 555, 855
+    x4, y4 = 555, 904
+    x5, y5 = 555, 964
 
     # Define the probabilities
     probabilities = [0.01, 0.20, 0.40, 0.05, 0.01]
@@ -888,74 +888,16 @@ def radio_Buttons_Page_Three(): # Page 3: Regulations Related Statements
     pageScroll(15)
 
 
-    '''select random option for maternity leaves are honored'''
+    '''select random option for climate change contributed to increased migration'''
     # Define the coordinates
-    x1, y1 = 593, 344
-    x2, y2 = 592, 391
-    x3, y3 = 590, 444
-    x4, y4 = 591, 490
-    x5, y5 = 590, 542
+    x1, y1 = 556, 476
+    x2, y2 = 556, 533
+    x3, y3 = 556, 585
+    x4, y4 = 556, 642
+    x5, y5 = 556, 694
 
     # Define the probabilities
     probabilities = [0.01, 0.10, 0.25, 0.40, 0.01]
-
-    # Choose between the two sets of coordinates based on probabilities
-    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
-
-    # Move the cursor to "related to flexible timings" section 
-    pyautogui.moveTo(x=x, y=y, duration=0.3)
-    pyautogui.click()
-
-    '''select random option for does not provide transportation facilities'''
-    # Define the coordinates
-    x1, y1 = 594, 749
-    x2, y2 = 592, 800
-    x3, y3 = 593, 851
-    x4, y4 = 594, 902
-    x5, y5 = 592, 948
-
-    # Define the probabilities
-    probabilities = [0.01, 0.60, 0.35, 0.10, 0.01]
-
-    # Choose between the two sets of coordinates based on probabilities
-    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
-
-    # Move the cursor to "related to flexible timings" section 
-    pyautogui.moveTo(x=x, y=y, duration=0.3)
-    pyautogui.click()
-    
-    '''Page Scrolled'''
-    pageScroll(17)
-
-    '''select random option for higher scope of women representation in the board positions'''
-    # Define the coordinates
-    x1, y1 = 592, 277
-    x2, y2 = 594, 326
-    x3, y3 = 592, 376
-    x4, y4 = 592, 425
-    x5, y5 = 593, 478
-
-    # Define the probabilities
-    probabilities = [0.01, 0.50, 0.35, 0.05, 0.01]
-
-    # Choose between the two sets of coordinates based on probabilities
-    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
-
-    # Move the cursor to "related to flexible timings" section 
-    pyautogui.moveTo(x=x, y=y, duration=0.3)
-    pyautogui.click()
-
-
-    '''select random option for several important positions are occupied by the same set of women managers'''
-    # Define the coordinates
-    x1, y1 = 593, 687
-    x2, y2 = 593, 733
-    x3, y3 = 594, 786
-    x4, y4 = 591, 836
-    x5, y5 = 594, 883
-
-    # Define the probabilities
-    probabilities = [0.01, 0.10, 0.65, 0.05, 0.01]
 
     # Choose between the two sets of coordinates based on probabilities
     x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
@@ -1233,7 +1175,6 @@ def page_Two_Text_Fields():
     print("----------------------------------------------------------------------------")
     print("Marital Status Clicked")
 
-    time.sleep(1)
 
     '''Random Contact Number Generated STARTS HERE'''
 
@@ -1276,22 +1217,22 @@ def page_Two_Text_Fields():
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[10]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     
     organizationName = [
-        "Tata Consultancy Services (TCS)",
-        "Infosys",
-        "Wipro Limited",
-        "Tech Mahindra",
-        "Accenture India",
-        "Capgemini",
-        "Cognizant Technology Solutions",
-        "Genpact",
-        "SAP Labs India",
-        "Oracle India",
-        "TATA Elxsi",
-        "Deloitte India",
-        "Ernst & Young (EY)",
-        "MoEngage",
-        "GX Group",
-        "Amazon,",
+        "Tata Consultancy Services (TCS) - IT",
+        "Infosys - IT",
+        "Wipro Limited - IT",
+        "Tech Mahindra - IT",
+        "Accenture India - IT",
+        "Capgemini - IT",
+        "Cognizant Technology Solutions - IT",
+        "Genpact - IT",
+        "SAP Labs India - IT",
+        "Oracle India - IT",
+        "TATA Elxsi - IT",
+        "Deloitte India - IT",
+        "Ernst & Young (EY) - IT",
+        "MoEngage - IT",
+        "GX Group - IT",
+        "Amazon - IT",
     ]
 
     # Define the probabilities
@@ -1306,39 +1247,37 @@ def page_Two_Text_Fields():
     
     '''Oraganization Name and Type ENDS HERE'''
 
-
     randomNumber = [1,2,3] # List of three numbers
-
-    time.sleep(5)
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[11]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Professional Experience Added
 
-    time.sleep(5)
+    print("Total Professional Experience Added")
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[12]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Tenure in Present Organization Added
-
-    time.sleep(5)
+    
+    print("Tenure in Present Organization Added")
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[13]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Tenure in Current Position Added
-
-    time.sleep(5)
+    
+    print("Total Tenure in current position Added")
     
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("IT") # Functional Department Added
 
-    time.sleep(5)
-
+    print("Functional Department Added")
+        
     # Scroll the screen to the 'Designation' Section
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
     
-    designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer', 'Team Leader', ]
-    probabilities = [0.7, 0.3, 0.22, 0.30, 0.12, 0.02]
+    designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer', 'Team Leader', 'Senior Developer']
+    probabilities = [0.7, 0.3, 0.22, 0.30, 0.12, 0.02, 0.01]
     shortTextFields.send_keys(random.choices(designation, weights=probabilities)[0]) # Team Designation selected randomly
-
+    
+    print("Team Designation Added")
 
     return "All Text Fields completed for this Page-2"
 
@@ -1355,6 +1294,7 @@ def ageField():
 
     # Scroll the element into view
     driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
+    
     page_Two_Text_Fields()
     print("----------------------------------------------------------------------------")
 
@@ -1486,7 +1426,7 @@ def natureOfCompany():
 
     pageScroll(8)
 
-    dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe')
+    dropdownMenu = driver.find_element(By.CLASS_NAME, 'e2CuFe') # This part fetches the drop down menu arrow by its CLASS NAME
     dropdownMenu.click()
     time.sleep(1)
 
