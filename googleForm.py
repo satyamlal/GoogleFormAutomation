@@ -96,6 +96,25 @@ def radio_Buttons_Page_Four(): # Page 4: Climate Change and Long-term Impacts
     '''Page Scrolled'''
     pageScroll(12)
 
+    '''select random option for climate change has significantly affected agricultural productivity'''
+
+    # Define the coordinates
+    x1, y1 = 594, 263
+    x2, y2 = 594, 313
+    x3, y3 = 594, 365
+    x4, y4 = 594, 414
+    x5, y5 = 594, 463
+
+    # Define the probabilities
+    probabilities = [0.01, 0.01, 0.20, 0.70, 0.35]
+
+    # Choose between the two sets of coordinates based on probabilities
+    x, y = random.choices([(x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)], weights=probabilities)[0]
+
+    # Move the cursor to "male to female ratio in high visibility roles" section 
+    pyautogui.moveTo(x=x, y=y, duration=0.2)
+    pyautogui.click()
+
 
 def radio_Buttons_Page_Three(): # Page 3: Climate Change and Daily Life
 
@@ -690,7 +709,7 @@ def main():
 
             '''Page 4 submission ENDS HERE'''
 
-            submitNextForm() # Click on 'Submit Next Form / Response'
+            # submitNextForm() # Click on 'Submit Next Form / Response'
 
             counter += 1 # Counter increases after every successful form submission
 
