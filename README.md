@@ -24,6 +24,8 @@ Harvard CS50P Final Project YouTube Video [Link]()
 
 This program is designed to automatically open the Google Chrome browser using Python Selenium and fill out Google Forms. Here are the key features:
 
+- **Screen Size:** This program is specially designed to work on 15.6 inches screens having the resolution of 1920 x 1080. Other Screens bigger or smaller than this will face issues.
+
 - **Pre-requisite:** The program only functions if you are already logged into your Gmail account.
 
 - **Automated Form Filling:** The program uses XPath to automatically fill in all short answer text fields on a Google Form.
