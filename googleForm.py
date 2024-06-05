@@ -666,7 +666,7 @@ def record_timestamp():
         write_to_csv([])
 
     # Write timestamp to CSV file
-    write_to_csv(["Timestamp", timestamp])
+    write_to_csv(["Timestamp: ", timestamp])
 
 
 def main():
@@ -681,7 +681,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter <= 10:
+        while counter < 10:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
@@ -787,7 +787,7 @@ def main():
             counter += 1 # Counter increases after every successful form submission
             
         # Write counter value to CSV file
-        write_to_csv(["Counter:", counter])
+        write_to_csv(["Counter: ", counter])
 
         print("~~~~~~~~~~~~~~~~~~~~")
         print("Counter:", counter)
