@@ -671,7 +671,7 @@ def record_timestamp():
 
 def main():
 
-    global counter # global counter variable initialized
+    global counter, fullName, emailAddress, mobileNumber  # global variables to store data and run the loop
 
     try:
 
@@ -681,7 +681,7 @@ def main():
         # Write FULL NAME, EMAIL ADDRESS, CONTACT NUMBER before starting the to write any other data
         write_to_csv(["FULL NAME", "EMAIL ADDRESS", "CONTACT NUMBER"])
 
-        while counter <= 1:
+        while counter <= 10:
 
             fullName, emailAddress = generate_random_female_data()
             mobileNumber = generate_random_mobile_number()
@@ -799,9 +799,6 @@ def main():
         print("Timeout occurred: Element not found within the specified time")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-
-
-fullName, emailAddress = generate_random_female_data()
 
 if __name__ == "__main__":
     main()
