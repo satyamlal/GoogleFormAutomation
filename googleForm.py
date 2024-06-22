@@ -1,3 +1,18 @@
+'''
+Written by Satyam Lal
+Language used: Python
+
+Successfully Tested on 10,000 submissions
+
+Perfectly working and synchronized with Google Form and CSV.
+
+NOTE:
+1. Only Works on Screen Size of '1920 x 1080'
+2. It's a Havard CS50P Final Submission Project.
+3. This script is written only for educational purposes.
+4. Do not use it for any illegal purpose.
+'''
+
 from selenium import webdriver
 from chromedriver_py import binary_path
 from selenium.webdriver.support import expected_conditions as EC
