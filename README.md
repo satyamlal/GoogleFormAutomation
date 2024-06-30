@@ -2,7 +2,7 @@
 
 Specific for this google [form](https://docs.google.com/forms/d/e/1FAIpQLScGeZlDpHIDETBqFf-dabEpW-OV6Sd0nMeJGlC0olYuT2hySA/viewform?usp=sf_link).
 
-This Python Script automatically fill Google Form.
+This Python Script fully automates Google Form submissions.
 This code is written for **Harvard CS50 Final Project**.
 
 
