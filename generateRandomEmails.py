@@ -1,6 +1,5 @@
 import random
 import string
-import csv
 
 # List of common First Names
 first_names = [

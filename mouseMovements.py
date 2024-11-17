@@ -1,7 +1,4 @@
-from selenium import webdriver
-from chromedriver_py import binary_path
 import pyautogui
-import time
 
 
 # svc = webdriver.ChromeService(executable_path=binary_path)
