@@ -103,7 +103,7 @@ last_names = [
 ]
 
 def radio_Buttons_Page_Four(): # Page 4: Climate Change and Long-term Impacts
-    
+
     '''Page Scrolled'''
     pageScroll(12)
 
@@ -337,7 +337,7 @@ def page_Two_Text_Fields():
 
 
     '''Random Email Generated STARTS HERE'''
-    
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[8]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     print("Email Address added in the text field:", emailAddress)
 
@@ -345,12 +345,12 @@ def page_Two_Text_Fields():
     print("Email Filled")
 
     '''Random Email Generated ENDS HERE'''
-    
-    
+
+
     '''Highest Qualification START HERE'''
-    
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[9]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
+
     highest_Qualification = ['B.Tech', 'M.Tech', 'BCA', 'Masters']
 
     # Define the probabilities
@@ -360,15 +360,15 @@ def page_Two_Text_Fields():
     qualification = random.choices(highest_Qualification, weights=probabilities)[0]
 
     shortTextFields.send_keys(qualification) # Highest Qualification added
-    
+
     print("Highest Qualification Filled")
-    
+
     '''Highest Qualification selection END HERE'''
-    
+
     '''Oraganization Name and Type'''
-    
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[10]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
+
     organizationName = [
         "Tata Consultancy Services (TCS)",
         "Infosys",
@@ -393,10 +393,10 @@ def page_Two_Text_Fields():
 
     # Choose between the two sets of coordinates based on probabilities
     companyName = random.choices(organizationName, weights=probabilities)[0]
-    
+
     shortTextFields.send_keys(companyName) # Organization Name and Type Added Randomly
     print("Organization Name Added")
-    
+
     '''Oraganization Name and Type ENDS HERE'''
 
     randomNumber = [1,2,3] # List for choosing randomly Total Professional Experience, Tenure, Total Tenure in current position, and Functional Department
@@ -408,27 +408,27 @@ def page_Two_Text_Fields():
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[12]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Tenure in Present Organization Added
-    
+
     print("Tenure in Present Organization Added")
 
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[13]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys(random.choice(randomNumber)) # Total Tenure in Current Position Added
-    
+
     print("Total Tenure in current position Added")
-    
+
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[14]/div/div/div[2]/div/div[1]/div/div[1]/input')))
     shortTextFields.send_keys("IT") # Functional Department Added
 
     print("Functional Department Added")
-    
+
     # Scroll the screen to the 'Designation' Section
     driver.execute_script("arguments[0].scrollIntoView(true);", shortTextFields)
     shortTextFields = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[15]/div/div/div[2]/div/div/span/div/div[5]/div/span/div/div/div[1]/input')))
-    
+
     designation = ['Developer', 'Software Engineer', 'Data Scientist', 'Data Engineer', 'DevOps Engineer', 'Team Leader', 'Senior Developer']
     probabilities = [0.7, 0.3, 0.22, 0.30, 0.12, 0.02, 0.01]
     shortTextFields.send_keys(random.choices(designation, weights=probabilities)[0]) # Team Designation selected randomly
-    
+
     print("Team Designation Added")
 
     return "All Text Fields completed for this Page-2"
@@ -446,7 +446,7 @@ def ageField():
 
     # Scroll the element into view
     driver.execute_script("arguments[0].scrollIntoView(true);", ageTextField) # Wait for a short time to ensure the scroll operation is completed
-    
+
     page_Two_Text_Fields()
     print("----------------------------------------------------------------------------")
 
@@ -456,13 +456,13 @@ def ageField():
 def nameField():
     # Wait for input field to be visible and clickable
     nameTextField = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[4]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
+
     # Scroll the element into view
     # driver.execute_script("arguments[0].scrollIntoView(true);", nameTextField) # Wait for a short time to ensure the scroll operation is completed
     nameTextField.clear()
 
     # fullName, emailAddress = generate_random_female_data() # Random name and email generated for female
-    
+
     nameTextField.send_keys(fullName) # Name Added
 
     print("----------------------------------------------------------------------------")
@@ -479,7 +479,7 @@ def consentButton():
 
     # Wait for the "Consent" button to be clickable
     consentButtonFound = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/span')))
-    
+
     # Scroll the element into view (optional)
     driver.execute_script("arguments[0].scrollIntoView(true);", consentButtonFound)
 
@@ -516,13 +516,13 @@ def nextButton(path): # Next Button Function to move to another page
 def clearForm():
     # Wait for the "Clear" button to be clickable
     clearForm = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[2]/div/span/span')))
-    
+
     # Scroll the element into view (optional)
     driver.execute_script("arguments[0].scrollIntoView(true);", clearForm)
-    
+
     # Click on the "Clear Form" button
     clearForm.click()
-    
+
     print("Pop-up Menu Opened")
 
     # Use pyautogui to simulate mouse actions
@@ -539,13 +539,13 @@ def emailChecked():
     # Wait for email button to be clickable
     email_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'uHMk6b')))
     email_button.click()
-    
+
     return "Email checked"
 
 def addLocation():
     # Wait for location input field to be visible and clickable
     locationElement = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')))
-    
+
     locationElement.clear()
 
     locations = [
@@ -569,9 +569,9 @@ def addLocation():
         0.7, 0.75, 0.7, 0.7, 0.75, 0.8, 0.7, 0.75, 0.7, 0.75
     ]
 
-    
+
     locationElement.send_keys(random.choices(locations, weights=probabilities)[0])
-    
+
     return "Location Added"
 
 def natureOfCompany():
@@ -603,9 +603,9 @@ def pageScroll(n):
 generated_numbers = set()
 
 def generate_random_mobile_number():
-    
+
     global generated_numbers
-    
+
     while True:
         # Generate a random 10-digit number
         random_digits = ''.join([str(random.randint(6, 9)) for _ in range(10)])
@@ -627,41 +627,41 @@ def generate_random_mobile_number():
 def generate_random_username(first_name, surname):
     random_digit = random.choice([3, 4, 5])  # Randomly select digit to generate 3, 4, or 5 numbers
     random_number = ''.join(random.choices(string.digits, k=random_digit))  # Generate random numbers of digits
-    
+
     # Choose whether to use an underscore or a period between the names
     separator = random.choice(['_', '.', ''])
-    
+
     # Concatenate the first name and surname with the separator
     email_name = f"{first_name}{separator}{surname}"
-    
+
     # Randomly decide whether to add an additional period after the names
     if random.choice([True, False]):
         email_name += '.'
-    
+
     # Choose email domain based on probabilities
     email_address_list = ['@gmail.com', '@outlook.com', '@yahoo.com']
     probabilities = [0.91, 0.05, 0.04]
     email_domain = random.choices(email_address_list, weights=probabilities)[0]
-    
+
     # Concatenate the email name with the random number and append the selected email domain
     return email_name + random_number + email_domain
 
 
 # Generate random Indian names and corresponding email addresses
 def generate_random_female_data():
-    
+
     # Select a first name randomly
     first_name = random.choice(first_names)
 
     # Select a single surname based on the probabilities
     surname = random.choices(*zip(*last_names))[0]
-    
+
     # Generate a full name by concatenating first_name and surname
     full_name = first_name + " " + surname
-    
+
     # New email will be generate by passing the full_name as parameter to the generate_random_username function
     email = generate_random_username(first_name, surname)
-    
+
     return full_name, email.lower()  # Convert email address to lowercase
 
 
@@ -675,7 +675,7 @@ def write_to_csv(data):
 def record_timestamp():
     # Get current date and time
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
+
     # Write two empty lines to CSV file
     for _ in range (2):
         write_to_csv([])
@@ -739,7 +739,7 @@ def main():
 
             ageAdded = ageField() # This function is used to fill the age text field
             print(ageAdded)
-            
+
             '''Page 2 submission ENDS HERE'''
 
             print("----------------------------PAGE 2 ENDS HERE-------------------------------")
@@ -776,7 +776,7 @@ def main():
             '''Page 4 submission STARTS HERE'''
 
             print("----------------------------PAGE 4 STARTED----------------------------------")
-            
+
             '''Topic: Climate Change and Long-term Impacts'''
 
             page_Four_Radio_Buttons_Clicked = radio_Buttons_Page_Four()
@@ -798,9 +798,9 @@ def main():
 
             # Write data to CSV file
             write_to_csv([fullName, emailAddress, mobileNumber])
-            
+
             counter += 1 # Counter increases after every successful form submission
-            
+
         # Write counter value to CSV file
         write_to_csv(["Counter: ", counter])
 
