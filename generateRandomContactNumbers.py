@@ -1,5 +1,4 @@
 import random
-import csv
 
 '''This Program generates 1000 random numbers and store it into a csv file'''
 
